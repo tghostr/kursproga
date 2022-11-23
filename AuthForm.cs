@@ -37,6 +37,8 @@ namespace kursproga
             else
             {
                 command = new MySqlCommand("Select * from `authorization` where `login` = @uL AND `pass` = @uP AND `perms` = 0", db.getConnection());
+                command.Parameters.Add("@uL", MySqlDbType.VarChar).Value = loginUser;
+                command.Parameters.Add("@uP", MySqlDbType.VarChar).Value = passUser;
 
                 adapter.SelectCommand = command;
                 adapter.Fill(table);
