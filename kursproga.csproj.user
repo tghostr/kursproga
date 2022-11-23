@@ -4,7 +4,13 @@
     <Compile Update="AuthForm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="EquipForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="StaffForm.cs">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>

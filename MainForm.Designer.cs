@@ -30,22 +30,21 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.toolStripButton6 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton5 = new System.Windows.Forms.ToolStripButton();
+            this.tsbtEquip = new System.Windows.Forms.ToolStripButton();
+            this.tsbtStaff = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton4 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.panelForm = new System.Windows.Forms.Panel();
             this.toolStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // toolStrip1
             // 
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripButton6,
-            this.toolStripButton5,
+            this.tsbtEquip,
+            this.tsbtStaff,
             this.toolStripButton4,
             this.toolStripButton3,
             this.toolStripButton2,
@@ -56,27 +55,27 @@
             this.toolStrip1.TabIndex = 1;
             this.toolStrip1.Text = "toolStrip1";
             // 
-            // toolStripButton6
+            // tsbtEquip
             // 
-            this.toolStripButton6.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.toolStripButton6.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton6.Image")));
-            this.toolStripButton6.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton6.Name = "toolStripButton6";
-            this.toolStripButton6.Size = new System.Drawing.Size(92, 22);
-            this.toolStripButton6.Tag = "";
-            this.toolStripButton6.Text = "Оборудование";
-            this.toolStripButton6.Click += new System.EventHandler(this.toolStripButton6_Click);
+            this.tsbtEquip.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.tsbtEquip.Image = ((System.Drawing.Image)(resources.GetObject("tsbtEquip.Image")));
+            this.tsbtEquip.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbtEquip.Name = "tsbtEquip";
+            this.tsbtEquip.Size = new System.Drawing.Size(92, 22);
+            this.tsbtEquip.Tag = "";
+            this.tsbtEquip.Text = "Оборудование";
+            this.tsbtEquip.Click += new System.EventHandler(this.tsbtEquip_Click);
             // 
-            // toolStripButton5
+            // tsbtStaff
             // 
-            this.toolStripButton5.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.toolStripButton5.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton5.Image")));
-            this.toolStripButton5.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton5.Name = "toolStripButton5";
-            this.toolStripButton5.Size = new System.Drawing.Size(66, 22);
-            this.toolStripButton5.Tag = "";
-            this.toolStripButton5.Text = "Персонал";
-            this.toolStripButton5.Click += new System.EventHandler(this.toolStripButton5_Click);
+            this.tsbtStaff.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.tsbtStaff.Image = ((System.Drawing.Image)(resources.GetObject("tsbtStaff.Image")));
+            this.tsbtStaff.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbtStaff.Name = "tsbtStaff";
+            this.tsbtStaff.Size = new System.Drawing.Size(66, 22);
+            this.tsbtStaff.Tag = "";
+            this.tsbtStaff.Text = "Персонал";
+            this.tsbtStaff.Click += new System.EventHandler(this.tsbtStaff_Click);
             // 
             // toolStripButton4
             // 
@@ -118,28 +117,24 @@
             this.toolStripButton1.Size = new System.Drawing.Size(23, 22);
             this.toolStripButton1.Text = "toolStripButton1";
             // 
-            // dataGridView1
+            // panelForm
             // 
-            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 25);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowTemplate.Height = 25;
-            this.dataGridView1.Size = new System.Drawing.Size(587, 425);
-            this.dataGridView1.TabIndex = 2;
+            this.panelForm.Location = new System.Drawing.Point(0, 25);
+            this.panelForm.Name = "panelForm";
+            this.panelForm.Size = new System.Drawing.Size(600, 425);
+            this.panelForm.TabIndex = 2;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.panelForm);
             this.Controls.Add(this.toolStrip1);
             this.Name = "MainForm";
             this.Text = "MainForm";
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -147,12 +142,12 @@
 
         #endregion
         private ToolStrip toolStrip1;
-        private ToolStripButton toolStripButton6;
-        private ToolStripButton toolStripButton5;
+        private ToolStripButton tsbtEquip;
+        private ToolStripButton tsbtStaff;
         private ToolStripButton toolStripButton4;
         private ToolStripButton toolStripButton3;
         private ToolStripButton toolStripButton2;
-        private DataGridView dataGridView1;
         private ToolStripButton toolStripButton1;
+        private Panel panelForm;
     }
 }

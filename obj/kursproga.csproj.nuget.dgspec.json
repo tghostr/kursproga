@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\kurs\\kursproga.csproj": {}
+    "C:\\Users\\Ghost\\source\\repos\\kursproga\\kursproga.csproj": {}
   },
   "projects": {
-    "D:\\kurs\\kursproga.csproj": {
+    "C:\\Users\\Ghost\\source\\repos\\kursproga\\kursproga.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\kurs\\kursproga.csproj",
+        "projectUniqueName": "C:\\Users\\Ghost\\source\\repos\\kursproga\\kursproga.csproj",
         "projectName": "kursproga",
-        "projectPath": "D:\\kurs\\kursproga.csproj",
+        "projectPath": "C:\\Users\\Ghost\\source\\repos\\kursproga\\kursproga.csproj",
         "packagesPath": "C:\\Users\\Ghost\\.nuget\\packages\\",
-        "outputPath": "D:\\kurs\\obj\\",
+        "outputPath": "C:\\Users\\Ghost\\source\\repos\\kursproga\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Ghost\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -40,6 +40,10 @@
         "net6.0-windows7.0": {
           "targetAlias": "net6.0-windows",
           "dependencies": {
+            "MaterialSkin": {
+              "target": "Package",
+              "version": "[0.2.1, )"
+            },
             "MySqlConnector": {
               "target": "Package",
               "version": "[2.2.0, )"
@@ -68,7 +72,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.402\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     }
