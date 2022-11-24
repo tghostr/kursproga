@@ -37,10 +37,5 @@ namespace kursproga
             dataGridView1.Columns[4].HeaderText = "Количество";
             dataGridView1.Columns[5].HeaderText = "Стоимость";
         }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            label1.Text = "Gay";
-        }
     }
 }

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Vy6NV/eiHB25roFthsJqB586Kd26QbChnGFVHEqxDPg5YOy+6e5PD4UocSOAUbrSTX4zMM6q1XF3qD0obWicmw==",
+  "dgSpecHash": "aw2vLWnmFakB1JVmauyjSVnu15PXgOJLciWMcBpOcNA87K2QZ7Hgnd4x3AmnsKIQFYvniTqQPoh56nAZV0OWSg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\student\\Source\\Repos\\kursproga\\kursproga.csproj",
+  "projectFilePath": "C:\\Users\\student\\Source\\Repos\\kursproga1\\kursproga.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\student\\.nuget\\packages\\materialskin\\0.2.1\\materialskin.0.2.1.nupkg.sha512",
     "C:\\Users\\student\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",

@@ -57,7 +57,6 @@
             // 
             this.txtPass.Location = new System.Drawing.Point(50, 129);
             this.txtPass.Name = "txtPass";
-            this.txtPass.PasswordChar = '○';
             this.txtPass.PlaceholderText = "Пароль";
             this.txtPass.Size = new System.Drawing.Size(156, 23);
             this.txtPass.TabIndex = 2;
@@ -93,6 +92,7 @@
             this.Controls.Add(this.btAuth);
             this.Name = "AuthForm";
             this.Text = "AuthForm";
+            this.Load += new System.EventHandler(this.AuthForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

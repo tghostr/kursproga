@@ -59,5 +59,10 @@ namespace kursproga
             if (cbPass.Checked) { txtPass.PasswordChar = (char)0; }
             else { txtPass.PasswordChar = (char)1; }
         }
+
+        private void AuthForm_Load(object sender, EventArgs e)
+        {
+            txtPass.PasswordChar = (char)1;
+        }
     }
 }
