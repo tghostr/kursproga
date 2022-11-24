@@ -1,6 +1,6 @@
 ﻿namespace kursproga
 {
-    partial class StaffForm
+    partial class RequestForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,25 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StaffForm));
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RequestForm));
             this.btSearch = new System.Windows.Forms.PictureBox();
             this.btIns = new System.Windows.Forms.Button();
             this.btDel = new System.Windows.Forms.Button();
             this.btAdd = new System.Windows.Forms.Button();
             this.tbSearch = new System.Windows.Forms.TextBox();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.btSearch)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 0);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowTemplate.Height = 25;
-            this.dataGridView1.Size = new System.Drawing.Size(600, 450);
-            this.dataGridView1.TabIndex = 0;
             // 
             // btSearch
             // 
@@ -55,7 +46,7 @@
             this.btSearch.Location = new System.Drawing.Point(771, 33);
             this.btSearch.Name = "btSearch";
             this.btSearch.Size = new System.Drawing.Size(16, 16);
-            this.btSearch.TabIndex = 16;
+            this.btSearch.TabIndex = 22;
             this.btSearch.TabStop = false;
             // 
             // btIns
@@ -63,7 +54,7 @@
             this.btIns.Location = new System.Drawing.Point(610, 133);
             this.btIns.Name = "btIns";
             this.btIns.Size = new System.Drawing.Size(180, 22);
-            this.btIns.TabIndex = 15;
+            this.btIns.TabIndex = 21;
             this.btIns.Text = "Обновить";
             this.btIns.UseVisualStyleBackColor = true;
             // 
@@ -72,7 +63,7 @@
             this.btDel.Location = new System.Drawing.Point(610, 104);
             this.btDel.Name = "btDel";
             this.btDel.Size = new System.Drawing.Size(180, 22);
-            this.btDel.TabIndex = 14;
+            this.btDel.TabIndex = 20;
             this.btDel.Text = "Удалить";
             this.btDel.UseVisualStyleBackColor = true;
             // 
@@ -81,7 +72,7 @@
             this.btAdd.Location = new System.Drawing.Point(610, 75);
             this.btAdd.Name = "btAdd";
             this.btAdd.Size = new System.Drawing.Size(180, 22);
-            this.btAdd.TabIndex = 13;
+            this.btAdd.TabIndex = 19;
             this.btAdd.Text = "Добавить";
             this.btAdd.UseVisualStyleBackColor = true;
             // 
@@ -92,9 +83,18 @@
             this.tbSearch.Name = "tbSearch";
             this.tbSearch.PlaceholderText = "Search";
             this.tbSearch.Size = new System.Drawing.Size(180, 22);
-            this.tbSearch.TabIndex = 12;
+            this.tbSearch.TabIndex = 18;
             // 
-            // StaffForm
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(0, 0);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowTemplate.Height = 25;
+            this.dataGridView1.Size = new System.Drawing.Size(600, 450);
+            this.dataGridView1.TabIndex = 17;
+            // 
+            // RequestForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -106,11 +106,11 @@
             this.Controls.Add(this.tbSearch);
             this.Controls.Add(this.dataGridView1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "StaffForm";
-            this.Text = "StaffForm";
-            this.Load += new System.EventHandler(this.StaffForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.Name = "RequestForm";
+            this.Text = "RequestForm";
+            this.Load += new System.EventHandler(this.RequestForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.btSearch)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -118,11 +118,11 @@
 
         #endregion
 
-        private DataGridView dataGridView1;
         private PictureBox btSearch;
         private Button btIns;
         private Button btDel;
         private Button btAdd;
         private TextBox tbSearch;
+        private DataGridView dataGridView1;
     }
 }

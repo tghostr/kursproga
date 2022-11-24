@@ -86,6 +86,7 @@
             this.toolStripButton4.Size = new System.Drawing.Size(75, 22);
             this.toolStripButton4.Tag = "";
             this.toolStripButton4.Text = "Материалы";
+            this.toolStripButton4.Click += new System.EventHandler(this.toolStripButton4_Click);
             // 
             // toolStripButton3
             // 
@@ -96,6 +97,7 @@
             this.toolStripButton3.Size = new System.Drawing.Size(49, 22);
             this.toolStripButton3.Tag = "";
             this.toolStripButton3.Text = "Заявки";
+            this.toolStripButton3.Click += new System.EventHandler(this.toolStripButton3_Click);
             // 
             // toolStripButton2
             // 
@@ -121,7 +123,7 @@
             // 
             this.panelForm.Location = new System.Drawing.Point(0, 25);
             this.panelForm.Name = "panelForm";
-            this.panelForm.Size = new System.Drawing.Size(600, 425);
+            this.panelForm.Size = new System.Drawing.Size(800, 425);
             this.panelForm.TabIndex = 2;
             // 
             // MainForm

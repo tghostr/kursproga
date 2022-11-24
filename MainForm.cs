@@ -48,7 +48,17 @@ namespace kursproga
 
         private void toolStripButton2_Click(object sender, EventArgs e)
         {
-            ds.Clear();
+
+        }
+
+        private void toolStripButton4_Click(object sender, EventArgs e)
+        {
+            ShowForm(new MaterialForm());
+        }
+
+        private void toolStripButton3_Click(object sender, EventArgs e)
+        {
+            ShowForm(new RequestForm());
         }
     }
 }
