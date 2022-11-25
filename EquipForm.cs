@@ -67,5 +67,46 @@ namespace kursproga
         {
             btSearch_Click(sender, e);
         }
+
+        private void btIns_Click(object sender, EventArgs e)
+        {
+            if(gbIns.Visible == false)
+            {
+                gbIns.Visible = true;
+                textBox1.Focus();
+            }
+            if (gbIns.Visible == true && !string.IsNullOrEmpty(textBox1.Text))
+            {
+                int emprice = Convert.ToInt32(textBox3.Text);
+                int emnumber = Convert.ToInt32(textBox4.Text);
+                int emcost = emprice * emnumber;
+                DB db = new DB();
+                MySqlCommand command = new MySqlCommand("INSERT INTO `equipment`(`emname`, `emunit`, `emprice`, `emnumber`, `emcost`) VALUES('"+textBox1.Text+"', '"+textBox2.Text+"', '" + textBox3.Text + "', '" + textBox4.Text + "', '" + emcost + "');", db.getConnection());
+                db.openConnection();
+                try
+                {
+                    if (command.ExecuteNonQuery() == 1)
+                    {
+                        MessageBox.Show("Данные добавлены");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Данные не добавлены");
+                    }
+                }catch(Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                foreach(Control c in gbIns.Controls)
+                {
+                    if(c is TextBox)
+                    {
+                        c.Text = null;
+                    }
+                }
+                EquipForm_Load(sender,e);
+                gbIns.Visible = false;
+            }
+        }
     }
 }

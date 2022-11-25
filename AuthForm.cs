@@ -9,7 +9,7 @@ namespace kursproga
         {
             InitializeComponent();
         }
-
+        
         private void btAuth_Click(object sender, EventArgs e)
         {
             String loginUser = txtLog.Text;
@@ -62,7 +62,9 @@ namespace kursproga
 
         private void AuthForm_Load(object sender, EventArgs e)
         {
+            txtLog.Focus();
             txtPass.PasswordChar = (char)1;
+            txtLog.Focus();
         }
     }
 }

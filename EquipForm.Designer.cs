@@ -40,8 +40,14 @@
             this.btDel = new System.Windows.Forms.Button();
             this.btUpd = new System.Windows.Forms.Button();
             this.btSearch = new System.Windows.Forms.PictureBox();
+            this.gbIns = new System.Windows.Forms.GroupBox();
+            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btSearch)).BeginInit();
+            this.gbIns.SuspendLayout();
             this.SuspendLayout();
             // 
             // dataGridView1
@@ -108,10 +114,11 @@
             this.btIns.TabIndex = 2;
             this.btIns.Text = "Добавить";
             this.btIns.UseVisualStyleBackColor = true;
+            this.btIns.Click += new System.EventHandler(this.btIns_Click);
             // 
             // btDel
             // 
-            this.btDel.Location = new System.Drawing.Point(610, 104);
+            this.btDel.Location = new System.Drawing.Point(610, 390);
             this.btDel.Name = "btDel";
             this.btDel.Size = new System.Drawing.Size(180, 22);
             this.btDel.TabIndex = 3;
@@ -120,7 +127,7 @@
             // 
             // btUpd
             // 
-            this.btUpd.Location = new System.Drawing.Point(610, 133);
+            this.btUpd.Location = new System.Drawing.Point(610, 418);
             this.btUpd.Name = "btUpd";
             this.btUpd.Size = new System.Drawing.Size(180, 22);
             this.btUpd.TabIndex = 4;
@@ -139,11 +146,57 @@
             this.btSearch.TabStop = false;
             this.btSearch.Click += new System.EventHandler(this.btSearch_Click);
             // 
+            // gbIns
+            // 
+            this.gbIns.Controls.Add(this.textBox4);
+            this.gbIns.Controls.Add(this.textBox3);
+            this.gbIns.Controls.Add(this.textBox2);
+            this.gbIns.Controls.Add(this.textBox1);
+            this.gbIns.Location = new System.Drawing.Point(610, 103);
+            this.gbIns.Name = "gbIns";
+            this.gbIns.Size = new System.Drawing.Size(180, 106);
+            this.gbIns.TabIndex = 18;
+            this.gbIns.TabStop = false;
+            this.gbIns.Visible = false;
+            // 
+            // textBox4
+            // 
+            this.textBox4.Location = new System.Drawing.Point(0, 84);
+            this.textBox4.Multiline = true;
+            this.textBox4.Name = "textBox4";
+            this.textBox4.Size = new System.Drawing.Size(180, 22);
+            this.textBox4.TabIndex = 0;
+            // 
+            // textBox3
+            // 
+            this.textBox3.Location = new System.Drawing.Point(0, 56);
+            this.textBox3.Multiline = true;
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(180, 22);
+            this.textBox3.TabIndex = 0;
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(0, 28);
+            this.textBox2.Multiline = true;
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(180, 22);
+            this.textBox2.TabIndex = 0;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(0, 0);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(180, 22);
+            this.textBox1.TabIndex = 0;
+            // 
             // EquipForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.gbIns);
             this.Controls.Add(this.btSearch);
             this.Controls.Add(this.btUpd);
             this.Controls.Add(this.btDel);
@@ -156,6 +209,8 @@
             this.Load += new System.EventHandler(this.EquipForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btSearch)).EndInit();
+            this.gbIns.ResumeLayout(false);
+            this.gbIns.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -174,5 +229,10 @@
         private Button btDel;
         private Button btUpd;
         private PictureBox btSearch;
+        private GroupBox gbIns;
+        private TextBox textBox4;
+        private TextBox textBox3;
+        private TextBox textBox2;
+        private TextBox textBox1;
     }
 }
