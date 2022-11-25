@@ -62,9 +62,7 @@ namespace kursproga
 
         private void AuthForm_Load(object sender, EventArgs e)
         {
-            txtLog.Focus();
             txtPass.PasswordChar = (char)1;
-            txtLog.Focus();
         }
     }
 }
