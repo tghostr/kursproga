@@ -123,17 +123,18 @@
             // 
             this.panelForm.Location = new System.Drawing.Point(0, 25);
             this.panelForm.Name = "panelForm";
-            this.panelForm.Size = new System.Drawing.Size(800, 425);
+            this.panelForm.Size = new System.Drawing.Size(800, 475);
             this.panelForm.TabIndex = 2;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(800, 475);
             this.Controls.Add(this.panelForm);
             this.Controls.Add(this.toolStrip1);
             this.Name = "MainForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MainForm";
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();

@@ -63,6 +63,7 @@ namespace kursproga
         private void AuthForm_Load(object sender, EventArgs e)
         {
             txtPass.UseSystemPasswordChar = true;
+            
         }
     }
 }

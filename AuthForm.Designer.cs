@@ -60,6 +60,7 @@
             this.txtPass.PlaceholderText = "Пароль";
             this.txtPass.Size = new System.Drawing.Size(156, 23);
             this.txtPass.TabIndex = 2;
+            this.txtPass.UseSystemPasswordChar = true;
             // 
             // lbAuth
             // 
@@ -84,13 +85,17 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(247, 269);
+            this.ClientSize = new System.Drawing.Size(244, 261);
             this.Controls.Add(this.cbPass);
             this.Controls.Add(this.lbAuth);
             this.Controls.Add(this.txtPass);
             this.Controls.Add(this.txtLog);
             this.Controls.Add(this.btAuth);
+            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(260, 300);
+            this.MinimumSize = new System.Drawing.Size(260, 300);
             this.Name = "AuthForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AuthForm";
             this.Load += new System.EventHandler(this.AuthForm_Load);
             this.ResumeLayout(false);
