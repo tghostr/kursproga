@@ -56,13 +56,13 @@ namespace kursproga
 
         private void cbPass_CheckedChanged(object sender, EventArgs e)
         {
-            if (cbPass.Checked) { txtPass.PasswordChar = (char)0; }
-            else { txtPass.PasswordChar = (char)1; }
+            if (cbPass.Checked) { txtPass.UseSystemPasswordChar = false; }
+            else { txtPass.UseSystemPasswordChar = true; }
         }
 
         private void AuthForm_Load(object sender, EventArgs e)
         {
-            txtPass.PasswordChar = (char)1;
+            txtPass.UseSystemPasswordChar = true;
         }
     }
 }

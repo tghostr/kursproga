@@ -45,6 +45,7 @@
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
+            this.tbDel = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btSearch)).BeginInit();
             this.gbIns.SuspendLayout();
@@ -59,6 +60,7 @@
             this.dataGridView1.RowTemplate.Height = 25;
             this.dataGridView1.Size = new System.Drawing.Size(600, 450);
             this.dataGridView1.TabIndex = 0;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // BottomToolStripPanel
             // 
@@ -118,16 +120,17 @@
             // 
             // btDel
             // 
-            this.btDel.Location = new System.Drawing.Point(610, 390);
+            this.btDel.Location = new System.Drawing.Point(610, 275);
             this.btDel.Name = "btDel";
             this.btDel.Size = new System.Drawing.Size(180, 22);
             this.btDel.TabIndex = 3;
             this.btDel.Text = "Удалить";
             this.btDel.UseVisualStyleBackColor = true;
+            this.btDel.Click += new System.EventHandler(this.btDel_Click);
             // 
             // btUpd
             // 
-            this.btUpd.Location = new System.Drawing.Point(610, 418);
+            this.btUpd.Location = new System.Drawing.Point(610, 215);
             this.btUpd.Name = "btUpd";
             this.btUpd.Size = new System.Drawing.Size(180, 22);
             this.btUpd.TabIndex = 4;
@@ -191,11 +194,20 @@
             this.textBox1.Size = new System.Drawing.Size(180, 22);
             this.textBox1.TabIndex = 0;
             // 
+            // tbDel
+            // 
+            this.tbDel.Location = new System.Drawing.Point(610, 303);
+            this.tbDel.Name = "tbDel";
+            this.tbDel.Size = new System.Drawing.Size(180, 23);
+            this.tbDel.TabIndex = 19;
+            this.tbDel.Visible = false;
+            // 
             // EquipForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.tbDel);
             this.Controls.Add(this.gbIns);
             this.Controls.Add(this.btSearch);
             this.Controls.Add(this.btUpd);
@@ -234,5 +246,6 @@
         private TextBox textBox3;
         private TextBox textBox2;
         private TextBox textBox1;
+        private TextBox tbDel;
     }
 }
