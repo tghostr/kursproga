@@ -130,10 +130,15 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(800, 475);
             this.Controls.Add(this.panelForm);
             this.Controls.Add(this.toolStrip1);
+            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(816, 514);
+            this.MinimumSize = new System.Drawing.Size(816, 514);
             this.Name = "MainForm";
+            this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MainForm";
             this.toolStrip1.ResumeLayout(false);

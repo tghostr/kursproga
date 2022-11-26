@@ -538,11 +538,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Ghost\\Source\\Repos\\kursproga6\\kursproga.csproj",
+      "projectUniqueName": "C:\\Users\\Ghost\\Source\\Repos\\kursproga6+\\kursproga.csproj",
       "projectName": "kursproga",
-      "projectPath": "C:\\Users\\Ghost\\Source\\Repos\\kursproga6\\kursproga.csproj",
+      "projectPath": "C:\\Users\\Ghost\\Source\\Repos\\kursproga6+\\kursproga.csproj",
       "packagesPath": "C:\\Users\\Ghost\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Ghost\\Source\\Repos\\kursproga6\\obj\\",
+      "outputPath": "C:\\Users\\Ghost\\Source\\Repos\\kursproga6+\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Ghost\\AppData\\Roaming\\NuGet\\NuGet.Config",
