@@ -66,11 +66,11 @@ namespace kursproga
         private void btUpd_Click(object sender, EventArgs e)
         {
             int id = Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value.ToString());
-            if (gbIns.Visible == false)
+            if (gbUpd.Visible == false)
             {
-                gbIns.Visible = true;
-                textBox1.Focus();
-                foreach (Control c in gbIns.Controls)
+                gbUpd.Visible = true;
+                textBox5.Focus();
+                foreach (Control c in gbUpd.Controls)
                 {
                     if (c is TextBox)
                     {
@@ -78,13 +78,13 @@ namespace kursproga
                     }
                 }
             }
-            if (gbIns.Visible == true && !string.IsNullOrEmpty(textBox1.Text))
+            if (gbUpd.Visible == true && !string.IsNullOrEmpty(textBox5.Text))
             {
-                int emprice = Convert.ToInt32(textBox3.Text);
-                int emnumber = Convert.ToInt32(textBox4.Text);
+                int emprice = Convert.ToInt32(textBox7.Text);
+                int emnumber = Convert.ToInt32(textBox8.Text);
                 int emcost = emprice * emnumber;
                 DB db = new DB();
-                MySqlCommand command = new MySqlCommand("UPDATE `equipment` SET emname='" + textBox1.Text + "', emunit='" + textBox2.Text + "', emprice='"+textBox3.Text+"', emnumber='"+textBox4.Text+"', emcost='"+emcost+ "' WHERE idequipment='"+id+"' ;", db.getConnection());
+                MySqlCommand command = new MySqlCommand("UPDATE `equipment` SET emname='" + textBox5.Text + "', emunit='" + textBox6.Text + "', emprice='"+textBox7.Text+"', emnumber='"+textBox8.Text+"', emcost='"+emcost+ "' WHERE idequipment='"+id+"' ;", db.getConnection());
                 db.openConnection();
                 try
                 {
@@ -101,7 +101,7 @@ namespace kursproga
                 {
                     MessageBox.Show(ex.Message);
                 }
-                foreach (Control c in gbIns.Controls)
+                foreach (Control c in gbUpd.Controls)
                 {
                     if (c is TextBox)
                     {
@@ -109,7 +109,7 @@ namespace kursproga
                     }
                 }
                 EquipForm_Load(sender, e);
-                gbIns.Visible = false;
+                gbUpd.Visible = false;
             }
         }
         private void btIns_Click(object sender, EventArgs e)
@@ -159,6 +159,10 @@ namespace kursproga
                 EquipForm_Load(sender, e);
                 gbIns.Visible = false;
             }
+            if (gbIns.Visible == true && string.IsNullOrEmpty(textBox1.Text))
+            {
+                gbIns.Visible = false;
+            }
         }
 
         private void btDel_Click(object sender, EventArgs e)
@@ -194,6 +198,32 @@ namespace kursproga
             textBox2.Text = dataGridView1.CurrentRow.Cells[2].Value.ToString();
             textBox3.Text = dataGridView1.CurrentRow.Cells[3].Value.ToString();
             textBox4.Text = dataGridView1.CurrentRow.Cells[4].Value.ToString();
+        }
+
+        private void btDel_Click_1(object sender, EventArgs e)
+        {
+            if (tbDel.Visible == false)
+            {
+                tbDel.Visible = true;
+                tbDel.Focus();
+            }
+            if (tbDel.Visible == true && !string.IsNullOrEmpty(tbDel.Text))
+            {
+                DB db = new DB();
+                MySqlCommand command = new MySqlCommand("DELETE FROM equipment WHERE idequipment = '" + tbDel.Text + "'", db.getConnection());
+                db.openConnection();
+                if (command.ExecuteNonQuery() == 1)
+                {
+                    MessageBox.Show("Данные удалены");
+                }
+                else
+                {
+                    MessageBox.Show("Данные не удалены");
+                }
+                tbDel.Text = null;
+                EquipForm_Load(sender, e);
+                tbDel.Visible = false;
+            }
         }
     }
 }
