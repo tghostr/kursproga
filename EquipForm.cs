@@ -68,6 +68,7 @@ namespace kursproga
             int id = Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value.ToString());
             if (gbUpd.Visible == false)
             {
+                showgb(gbUpd);
                 gbUpd.Visible = true;
                 textBox5.Focus();
                 foreach (Control c in gbUpd.Controls)
@@ -109,14 +110,14 @@ namespace kursproga
                     }
                 }
                 EquipForm_Load(sender, e);
-                gbUpd.Visible = false;
+                hidegb();
             }
         }
         private void btIns_Click(object sender, EventArgs e)
         {
             if (gbIns.Visible == false)
             {
-                gbIns.Visible = true;
+                showgb(gbIns);
                 textBox1.Focus();
                 foreach (Control c in gbIns.Controls)
                 {
@@ -157,22 +158,18 @@ namespace kursproga
                     }
                 }
                 EquipForm_Load(sender, e);
-                gbIns.Visible = false;
-            }
-            if (gbIns.Visible == true && string.IsNullOrEmpty(textBox1.Text))
-            {
-                gbIns.Visible = false;
+                hidegb();
             }
         }
 
         private void btDel_Click(object sender, EventArgs e)
         {
-            if (tbDel.Visible == false)
+            if (gbDel.Visible == false)
             {
-                tbDel.Visible = true;
+                showgb(gbDel);
                 tbDel.Focus();
             }
-            if (tbDel.Visible == true && !string.IsNullOrEmpty(tbDel.Text))
+            if (gbDel.Visible == true && !string.IsNullOrEmpty(tbDel.Text))
             {
                 DB db = new DB();
                 MySqlCommand command = new MySqlCommand("DELETE FROM equipment WHERE idequipment = '" + tbDel.Text + "'", db.getConnection());
@@ -187,43 +184,37 @@ namespace kursproga
                 }
                 tbDel.Text = null;
                 EquipForm_Load(sender, e);
-                tbDel.Visible = false;
+                hidegb();
             }
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             int id = Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value.ToString());
-            textBox1.Text = dataGridView1.CurrentRow.Cells[1].Value.ToString();
-            textBox2.Text = dataGridView1.CurrentRow.Cells[2].Value.ToString();
-            textBox3.Text = dataGridView1.CurrentRow.Cells[3].Value.ToString();
-            textBox4.Text = dataGridView1.CurrentRow.Cells[4].Value.ToString();
+            tbDel.Text = id.ToString();
+            textBox1.Text = textBox5.Text = dataGridView1.CurrentRow.Cells[1].Value.ToString();
+            textBox2.Text = textBox6.Text = dataGridView1.CurrentRow.Cells[2].Value.ToString();
+            textBox3.Text = textBox7.Text = dataGridView1.CurrentRow.Cells[3].Value.ToString();
+            textBox4.Text = textBox8.Text = dataGridView1.CurrentRow.Cells[4].Value.ToString();
         }
-
-        private void btDel_Click_1(object sender, EventArgs e)
+        private void hidegb()
         {
-            if (tbDel.Visible == false)
+            if (gbIns.Visible == true)
+                gbIns.Visible = false;
+            if (gbUpd.Visible == true)
+                gbUpd.Visible = false;
+            if (gbDel.Visible == true)
+                gbDel.Visible = false;
+        }
+        private void showgb(GroupBox actMenu)
+        {
+            if (actMenu.Visible == false)
             {
-                tbDel.Visible = true;
-                tbDel.Focus();
+                hidegb();
+                actMenu.Visible = true;
             }
-            if (tbDel.Visible == true && !string.IsNullOrEmpty(tbDel.Text))
-            {
-                DB db = new DB();
-                MySqlCommand command = new MySqlCommand("DELETE FROM equipment WHERE idequipment = '" + tbDel.Text + "'", db.getConnection());
-                db.openConnection();
-                if (command.ExecuteNonQuery() == 1)
-                {
-                    MessageBox.Show("Данные удалены");
-                }
-                else
-                {
-                    MessageBox.Show("Данные не удалены");
-                }
-                tbDel.Text = null;
-                EquipForm_Load(sender, e);
-                tbDel.Visible = false;
-            }
+            else
+                actMenu.Visible = false;
         }
     }
 }

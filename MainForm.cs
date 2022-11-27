@@ -48,7 +48,9 @@ namespace kursproga
 
         private void toolStripButton2_Click(object sender, EventArgs e)
         {
-
+            this.Close();
+            AuthForm authForm = new AuthForm();
+            authForm.Show();
         }
 
         private void toolStripButton4_Click(object sender, EventArgs e)

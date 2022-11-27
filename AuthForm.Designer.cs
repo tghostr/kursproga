@@ -33,11 +33,12 @@
             this.txtPass = new System.Windows.Forms.TextBox();
             this.lbAuth = new System.Windows.Forms.Label();
             this.cbPass = new System.Windows.Forms.CheckBox();
+            this.btExit = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btAuth
             // 
-            this.btAuth.Location = new System.Drawing.Point(50, 176);
+            this.btAuth.Location = new System.Drawing.Point(50, 161);
             this.btAuth.Name = "btAuth";
             this.btAuth.Size = new System.Drawing.Size(156, 23);
             this.btAuth.TabIndex = 0;
@@ -47,7 +48,7 @@
             // 
             // txtLog
             // 
-            this.txtLog.Location = new System.Drawing.Point(50, 88);
+            this.txtLog.Location = new System.Drawing.Point(50, 73);
             this.txtLog.Name = "txtLog";
             this.txtLog.PlaceholderText = "Логин";
             this.txtLog.Size = new System.Drawing.Size(156, 23);
@@ -55,7 +56,7 @@
             // 
             // txtPass
             // 
-            this.txtPass.Location = new System.Drawing.Point(50, 129);
+            this.txtPass.Location = new System.Drawing.Point(50, 114);
             this.txtPass.Name = "txtPass";
             this.txtPass.PlaceholderText = "Пароль";
             this.txtPass.Size = new System.Drawing.Size(156, 23);
@@ -74,12 +75,22 @@
             // cbPass
             // 
             this.cbPass.AutoSize = true;
-            this.cbPass.Location = new System.Drawing.Point(189, 134);
+            this.cbPass.Location = new System.Drawing.Point(189, 119);
             this.cbPass.Name = "cbPass";
             this.cbPass.Size = new System.Drawing.Size(15, 14);
             this.cbPass.TabIndex = 4;
             this.cbPass.UseVisualStyleBackColor = true;
             this.cbPass.CheckedChanged += new System.EventHandler(this.cbPass_CheckedChanged);
+            // 
+            // btExit
+            // 
+            this.btExit.Location = new System.Drawing.Point(50, 190);
+            this.btExit.Name = "btExit";
+            this.btExit.Size = new System.Drawing.Size(156, 23);
+            this.btExit.TabIndex = 0;
+            this.btExit.Text = "Выход";
+            this.btExit.UseVisualStyleBackColor = true;
+            this.btExit.Click += new System.EventHandler(this.btExit_Click);
             // 
             // AuthForm
             // 
@@ -91,6 +102,7 @@
             this.Controls.Add(this.lbAuth);
             this.Controls.Add(this.txtPass);
             this.Controls.Add(this.txtLog);
+            this.Controls.Add(this.btExit);
             this.Controls.Add(this.btAuth);
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(260, 300);
@@ -111,5 +123,6 @@
         private TextBox txtPass;
         private Label lbAuth;
         private CheckBox cbPass;
+        private Button btExit;
     }
 }

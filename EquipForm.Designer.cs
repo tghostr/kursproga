@@ -36,6 +36,7 @@
             this.LeftToolStripPanel = new System.Windows.Forms.ToolStripPanel();
             this.ContentPanel = new System.Windows.Forms.ToolStripContentPanel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.gbDel = new System.Windows.Forms.GroupBox();
             this.tbDel = new System.Windows.Forms.TextBox();
             this.btDel = new System.Windows.Forms.Button();
             this.gbUpd = new System.Windows.Forms.GroupBox();
@@ -55,6 +56,7 @@
             this.tbSearch = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel1.SuspendLayout();
+            this.gbDel.SuspendLayout();
             this.gbUpd.SuspendLayout();
             this.gbIns.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -110,7 +112,7 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.tbDel);
+            this.panel1.Controls.Add(this.gbDel);
             this.panel1.Controls.Add(this.btDel);
             this.panel1.Controls.Add(this.gbUpd);
             this.panel1.Controls.Add(this.btUpd);
@@ -123,13 +125,23 @@
             this.panel1.Size = new System.Drawing.Size(200, 450);
             this.panel1.TabIndex = 20;
             // 
+            // gbDel
+            // 
+            this.gbDel.Controls.Add(this.tbDel);
+            this.gbDel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.gbDel.Location = new System.Drawing.Point(0, 352);
+            this.gbDel.Name = "gbDel";
+            this.gbDel.Size = new System.Drawing.Size(200, 35);
+            this.gbDel.TabIndex = 22;
+            this.gbDel.TabStop = false;
+            this.gbDel.Visible = false;
+            // 
             // tbDel
             // 
-            this.tbDel.Location = new System.Drawing.Point(10, 358);
+            this.tbDel.Location = new System.Drawing.Point(10, 6);
             this.tbDel.Name = "tbDel";
             this.tbDel.Size = new System.Drawing.Size(180, 23);
             this.tbDel.TabIndex = 22;
-            this.tbDel.Visible = false;
             // 
             // btDel
             // 
@@ -140,7 +152,7 @@
             this.btDel.TabIndex = 4;
             this.btDel.Text = "Удалить";
             this.btDel.UseVisualStyleBackColor = true;
-            this.btDel.Click += new System.EventHandler(this.btDel_Click_1);
+            this.btDel.Click += new System.EventHandler(this.btDel_Click);
             // 
             // gbUpd
             // 
@@ -197,6 +209,7 @@
             this.btUpd.TabIndex = 20;
             this.btUpd.Text = "Редактировать";
             this.btUpd.UseVisualStyleBackColor = true;
+            this.btUpd.Click += new System.EventHandler(this.btUpd_Click);
             // 
             // gbIns
             // 
@@ -253,6 +266,7 @@
             this.btIns.TabIndex = 3;
             this.btIns.Text = "Добавить";
             this.btIns.UseVisualStyleBackColor = true;
+            this.btIns.Click += new System.EventHandler(this.btIns_Click);
             // 
             // panel2
             // 
@@ -282,6 +296,7 @@
             this.tbSearch.PlaceholderText = "Search";
             this.tbSearch.Size = new System.Drawing.Size(180, 22);
             this.tbSearch.TabIndex = 21;
+            this.tbSearch.TextChanged += new System.EventHandler(this.tbSearch_TextChanged);
             // 
             // EquipForm
             // 
@@ -296,7 +311,8 @@
             this.Load += new System.EventHandler(this.EquipForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.gbDel.ResumeLayout(false);
+            this.gbDel.PerformLayout();
             this.gbUpd.ResumeLayout(false);
             this.gbUpd.PerformLayout();
             this.gbIns.ResumeLayout(false);
@@ -334,5 +350,6 @@
         private TextBox textBox7;
         private TextBox textBox6;
         private TextBox textBox5;
+        private GroupBox gbDel;
     }
 }

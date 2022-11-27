@@ -65,5 +65,10 @@ namespace kursproga
             txtPass.UseSystemPasswordChar = true;
             
         }
+
+        private void btExit_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }
