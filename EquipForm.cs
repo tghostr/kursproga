@@ -166,6 +166,7 @@ namespace kursproga
         {
             if (gbDel.Visible == false)
             {
+                tbDel.Text = null;
                 showgb(gbDel);
                 tbDel.Focus();
             }

@@ -43,8 +43,8 @@
             // 
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsbtEquip,
-            this.tsbtStaff,
             this.toolStripButton4,
+            this.tsbtStaff,
             this.toolStripButton3,
             this.toolStripButton2});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
