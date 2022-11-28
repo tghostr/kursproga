@@ -13,6 +13,7 @@ namespace kursproga
 {
     public partial class StaffForm : Form
     {
+        int id = 0;
         public StaffForm()
         {
             InitializeComponent();
@@ -41,7 +42,7 @@ namespace kursproga
             DB db = new DB();
             DataTable table = new DataTable();
             MySqlDataAdapter adapter = new MySqlDataAdapter();
-            MySqlCommand command = new MySqlCommand("SELECT * FROM equipment WHERE CONCAT(`idequipment`, `emname`, `emunit`, `emprice`, `emnumber`, `emcost`) like '%" + tbSearch.Text + "%'", db.getConnection());
+            MySqlCommand command = new MySqlCommand("SELECT * FROM staff WHERE CONCAT(`idequipment`, `emname`, `emunit`, `emprice`, `emnumber`, `emcost`) like '%" + tbSearch.Text + "%'", db.getConnection());
 
             adapter.SelectCommand = command;
             adapter.Fill(table);
@@ -63,52 +64,57 @@ namespace kursproga
 
         private void btUpd_Click(object sender, EventArgs e)
         {
-            int id = Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value.ToString());
             if (gbUpd.Visible == false)
             {
-                showgb(gbUpd);
-                gbUpd.Visible = true;
-                textBox5.Focus();
-                foreach (Control c in gbUpd.Controls)
+                try
                 {
-                    if (c is TextBox)
+                    showgb(gbUpd);
+                    gbUpd.Visible = true;
+                    textBox5.Focus();
+                    foreach (Control c in gbUpd.Controls)
                     {
-                        c.Text = null;
+                        if (c is TextBox)
+                        {
+                            c.Text = null;
+                        }
                     }
+                }
+                catch
+                {
+                    MessageBox.Show("В таблице отсутствуют записи!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
                 }
             }
             if (gbUpd.Visible == true && !string.IsNullOrEmpty(textBox5.Text))
             {
-                int emprice = Convert.ToInt32(textBox7.Text);
-                int emnumber = Convert.ToInt32(textBox8.Text);
-                int emcost = emprice * emnumber;
-                DB db = new DB();
-                MySqlCommand command = new MySqlCommand("UPDATE `equipment` SET emname='" + textBox5.Text + "', emunit='" + textBox6.Text + "', emprice='" + textBox7.Text + "', emnumber='" + textBox8.Text + "', emcost='" + emcost + "' WHERE idequipment='" + id + "' ;", db.getConnection());
-                db.openConnection();
-                try
-                {
-                    if (command.ExecuteNonQuery() == 1)
-                    {
-                        MessageBox.Show("Данные обновлены");
-                    }
-                    else
-                    {
-                        MessageBox.Show("Данные не обновлены");
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-                foreach (Control c in gbUpd.Controls)
-                {
-                    if (c is TextBox)
-                    {
-                        c.Text = null;
-                    }
-                }
-                StaffForm_Load(sender, e);
-                hidegb();
+                //if (dataGridView1.Rows.Count > 0) { id = Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value.ToString()); }
+
+                //DB db = new DB();
+                //MySqlCommand command = new MySqlCommand("UPDATE `staff` SET name='" + textBox5.Text + "', surname='" + textBox6.Text + "', birthdate='" +  + "', authorization='" + textBox8.Text + "' WHERE idstaff='" + id + "' ;", db.getConnection());
+                //db.openConnection();
+                //try
+                //{
+                //    if (command.ExecuteNonQuery() == 1)
+                //    {
+                //        MessageBox.Show("Данные обновлены");
+                //    }
+                //    else
+                //    {
+                //        MessageBox.Show("Данные не обновлены");
+                //    }
+                //}
+                //catch (Exception ex)
+                //{
+                //    MessageBox.Show(ex.Message);
+                //}
+                //foreach (Control c in gbUpd.Controls)
+                //{
+                //    if (c is TextBox)
+                //    {
+                //        c.Text = null;
+                //    }
+                //}
+                //StaffForm_Load(sender, e);
+                //hidegb();
             }
         }
         private void btIns_Click(object sender, EventArgs e)
@@ -127,11 +133,9 @@ namespace kursproga
             }
             if (gbIns.Visible == true && !string.IsNullOrEmpty(textBox1.Text))
             {
-                int emprice = Convert.ToInt32(textBox3.Text);
-                int emnumber = Convert.ToInt32(textBox4.Text);
-                int emcost = emprice * emnumber;
+
                 DB db = new DB();
-                MySqlCommand command = new MySqlCommand("INSERT INTO `equipment`(`emname`, `emunit`, `emprice`, `emnumber`, `emcost`) VALUES('" + textBox1.Text + "', '" + textBox2.Text + "', '" + textBox3.Text + "', '" + textBox4.Text + "', '" + emcost + "');", db.getConnection());
+                MySqlCommand command = new MySqlCommand("INSERT INTO `staff`(`name`, `surname`, `birthdate`, `authorization`) VALUES('" + textBox1.Text + "', '" + textBox2.Text + "', '" + dateTimePicker1.Text + "', '" + textBox4.Text + "');", db.getConnection());
                 db.openConnection();
                 try
                 {
@@ -187,14 +191,21 @@ namespace kursproga
             }
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            int id = Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value.ToString());
-            tbDel.Text = id.ToString();
-            textBox1.Text = textBox5.Text = dataGridView1.CurrentRow.Cells[1].Value.ToString();
-            textBox2.Text = textBox6.Text = dataGridView1.CurrentRow.Cells[2].Value.ToString();
-            textBox3.Text = textBox7.Text = dataGridView1.CurrentRow.Cells[3].Value.ToString();
-            textBox4.Text = textBox8.Text = dataGridView1.CurrentRow.Cells[4].Value.ToString();
+            try
+            {
+                int id = Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value.ToString());
+                tbDel.Text = id.ToString();
+                textBox1.Text = textBox5.Text = dataGridView1.CurrentRow.Cells[1].Value.ToString();
+                textBox2.Text = textBox6.Text = dataGridView1.CurrentRow.Cells[2].Value.ToString();
+                dateTimePicker1.Text = dateTimePicker2.Text = dataGridView1.CurrentRow.Cells[3].Value.ToString();
+                textBox4.Text = textBox8.Text = dataGridView1.CurrentRow.Cells[4].Value.ToString();
+            }
+            catch
+            {
+                MessageBox.Show("Выберите другую ячейку!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
+            }
         }
         private void hidegb()
         {
@@ -215,5 +226,6 @@ namespace kursproga
             else
                 actMenu.Visible = false;
         }
+
     }
 }

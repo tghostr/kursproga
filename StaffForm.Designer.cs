@@ -35,14 +35,14 @@
             this.tbDel = new System.Windows.Forms.TextBox();
             this.btDel = new System.Windows.Forms.Button();
             this.gbUpd = new System.Windows.Forms.GroupBox();
+            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
             this.textBox8 = new System.Windows.Forms.TextBox();
-            this.textBox7 = new System.Windows.Forms.TextBox();
             this.textBox6 = new System.Windows.Forms.TextBox();
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.btUpd = new System.Windows.Forms.Button();
             this.gbIns = new System.Windows.Forms.GroupBox();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.btIns = new System.Windows.Forms.Button();
@@ -67,7 +67,7 @@
             this.dataGridView1.RowTemplate.Height = 25;
             this.dataGridView1.Size = new System.Drawing.Size(600, 450);
             this.dataGridView1.TabIndex = 0;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
             // panel1
             // 
@@ -115,8 +115,8 @@
             // 
             // gbUpd
             // 
+            this.gbUpd.Controls.Add(this.dateTimePicker2);
             this.gbUpd.Controls.Add(this.textBox8);
-            this.gbUpd.Controls.Add(this.textBox7);
             this.gbUpd.Controls.Add(this.textBox6);
             this.gbUpd.Controls.Add(this.textBox5);
             this.gbUpd.Dock = System.Windows.Forms.DockStyle.Top;
@@ -127,6 +127,15 @@
             this.gbUpd.TabStop = false;
             this.gbUpd.Visible = false;
             // 
+            // dateTimePicker2
+            // 
+            this.dateTimePicker2.CustomFormat = "yyyy-MM-dd";
+            this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTimePicker2.Location = new System.Drawing.Point(10, 62);
+            this.dateTimePicker2.Name = "dateTimePicker2";
+            this.dateTimePicker2.Size = new System.Drawing.Size(180, 23);
+            this.dateTimePicker2.TabIndex = 2;
+            // 
             // textBox8
             // 
             this.textBox8.Location = new System.Drawing.Point(10, 90);
@@ -134,14 +143,6 @@
             this.textBox8.Name = "textBox8";
             this.textBox8.Size = new System.Drawing.Size(180, 22);
             this.textBox8.TabIndex = 0;
-            // 
-            // textBox7
-            // 
-            this.textBox7.Location = new System.Drawing.Point(10, 62);
-            this.textBox7.Multiline = true;
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(180, 22);
-            this.textBox7.TabIndex = 0;
             // 
             // textBox6
             // 
@@ -172,8 +173,8 @@
             // 
             // gbIns
             // 
+            this.gbIns.Controls.Add(this.dateTimePicker1);
             this.gbIns.Controls.Add(this.textBox4);
-            this.gbIns.Controls.Add(this.textBox3);
             this.gbIns.Controls.Add(this.textBox2);
             this.gbIns.Controls.Add(this.textBox1);
             this.gbIns.Dock = System.Windows.Forms.DockStyle.Top;
@@ -184,6 +185,16 @@
             this.gbIns.TabStop = false;
             this.gbIns.Visible = false;
             // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.CustomFormat = "yyyy-MM-dd";
+            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTimePicker1.Location = new System.Drawing.Point(10, 61);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(180, 23);
+            this.dateTimePicker1.TabIndex = 1;
+            this.dateTimePicker1.Value = new System.DateTime(2022, 11, 28, 23, 43, 5, 0);
+            // 
             // textBox4
             // 
             this.textBox4.Location = new System.Drawing.Point(10, 90);
@@ -191,14 +202,6 @@
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(180, 22);
             this.textBox4.TabIndex = 0;
-            // 
-            // textBox3
-            // 
-            this.textBox3.Location = new System.Drawing.Point(10, 62);
-            this.textBox3.Multiline = true;
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(180, 22);
-            this.textBox3.TabIndex = 0;
             // 
             // textBox2
             // 
@@ -293,18 +296,18 @@
         private Button btDel;
         private GroupBox gbUpd;
         private TextBox textBox8;
-        private TextBox textBox7;
         private TextBox textBox6;
         private TextBox textBox5;
         private Button btUpd;
         private GroupBox gbIns;
         private TextBox textBox4;
-        private TextBox textBox3;
         private TextBox textBox2;
         private TextBox textBox1;
         private Button btIns;
         private Panel panel2;
         private PictureBox btSearch;
         private TextBox tbSearch;
+        private DateTimePicker dateTimePicker1;
+        private DateTimePicker dateTimePicker2;
     }
 }

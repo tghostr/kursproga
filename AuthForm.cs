@@ -21,22 +21,23 @@ namespace kursproga
 
             MySqlDataAdapter adapter = new MySqlDataAdapter();
 
-            MySqlCommand command = new MySqlCommand("Select * from `authorization` where `login` = @uL AND `pass` = @uP AND `perms` = 1", db.getConnection());
+            MySqlCommand command = new MySqlCommand("Select `perms` from `authorization` where `login` = @uL AND `pass` = @uP AND `perms` = 0", db.getConnection());
             command.Parameters.Add("@uL", MySqlDbType.VarChar).Value = loginUser;
             command.Parameters.Add("@uP", MySqlDbType.VarChar).Value = passUser;
 
             adapter.SelectCommand = command;
             adapter.Fill(table);
-
+            db.openConnection();
             if (table.Rows.Count > 0)
             {
+                Global.GlobalVar = command.ExecuteScalar().ToString();
                 this.Hide();
                 MainForm mainForm = new MainForm();
                 mainForm.Show();
             }
             else
             {
-                command = new MySqlCommand("Select * from `authorization` where `login` = @uL AND `pass` = @uP AND `perms` = 0", db.getConnection());
+                command = new MySqlCommand("Select `perms` from `authorization` where `login` = @uL AND `pass` = @uP AND `perms` = 1", db.getConnection());
                 command.Parameters.Add("@uL", MySqlDbType.VarChar).Value = loginUser;
                 command.Parameters.Add("@uP", MySqlDbType.VarChar).Value = passUser;
 
@@ -45,13 +46,32 @@ namespace kursproga
 
                 if (table.Rows.Count > 0)
                 {
+                    Global.GlobalVar = command.ExecuteScalar().ToString();
                     this.Hide();
-                    EquipForm equipForm = new EquipForm();
-                    equipForm.Show();
+                    MainForm mainForm = new MainForm();
+                    mainForm.Show();
                 }
                 else
-                    MessageBox.Show("Failed!");
+                {
+                    command = new MySqlCommand("Select `perms` from `authorization` where `login` = @uL AND `pass` = @uP AND `perms` = 2", db.getConnection());
+                    command.Parameters.Add("@uL", MySqlDbType.VarChar).Value = loginUser;
+                    command.Parameters.Add("@uP", MySqlDbType.VarChar).Value = passUser;
+
+                    adapter.SelectCommand = command;
+                    adapter.Fill(table);
+
+                    if (table.Rows.Count > 0)
+                    {
+                        Global.GlobalVar = command.ExecuteScalar().ToString();
+                        this.Hide();
+                        NewRequestForm nrForm = new NewRequestForm();
+                        nrForm.Show();
+                    }
+                    else
+                        MessageBox.Show("Неправильный логин или пароль!");
+                }
             }
+            db.closeConnection();
         }
 
         private void cbPass_CheckedChanged(object sender, EventArgs e)

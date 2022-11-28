@@ -61,7 +61,7 @@
             this.dataGridView1.RowTemplate.Height = 25;
             this.dataGridView1.Size = new System.Drawing.Size(600, 450);
             this.dataGridView1.TabIndex = 17;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
             // panel1
             // 
@@ -193,6 +193,7 @@
             this.btSearch.Size = new System.Drawing.Size(16, 16);
             this.btSearch.TabIndex = 22;
             this.btSearch.TabStop = false;
+            this.btSearch.Click += new System.EventHandler(this.btSearch_Click);
             // 
             // tbSearch
             // 
@@ -202,6 +203,7 @@
             this.tbSearch.PlaceholderText = "Search";
             this.tbSearch.Size = new System.Drawing.Size(180, 22);
             this.tbSearch.TabIndex = 21;
+            this.tbSearch.TextChanged += new System.EventHandler(this.tbSearch_TextChanged);
             // 
             // RequestForm
             // 

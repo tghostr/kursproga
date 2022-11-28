@@ -62,5 +62,10 @@ namespace kursproga
         {
             ShowForm(new RequestForm());
         }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

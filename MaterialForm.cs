@@ -13,6 +13,7 @@ namespace kursproga
 {
     public partial class MaterialForm : Form
     {
+        int id = 0;
         public MaterialForm()
         {
             InitializeComponent();
@@ -64,22 +65,30 @@ namespace kursproga
 
         private void btUpd_Click(object sender, EventArgs e)
         {
-            int id = Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value.ToString());
+            //int id = Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value.ToString());
             if (gbUpd.Visible == false)
             {
-                showgb(gbUpd);
-                gbUpd.Visible = true;
-                textBox5.Focus();
-                foreach (Control c in gbUpd.Controls)
+                try
                 {
-                    if (c is TextBox)
+                    showgb(gbUpd);
+                    gbUpd.Visible = true;
+                    textBox5.Focus();
+                    foreach (Control c in gbUpd.Controls)
                     {
-                        c.Text = null;
+                        if (c is TextBox)
+                        {
+                            c.Text = null;
+                        }
                     }
+                }
+                catch
+                {
+                    MessageBox.Show("В таблице отсутствуют записи!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
                 }
             }
             if (gbUpd.Visible == true && !string.IsNullOrEmpty(textBox5.Text))
             {
+                if (dataGridView1.Rows.Count > 0) { id = Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value.ToString()); }
                 int maprice = Convert.ToInt32(textBox7.Text);
                 int manumber = Convert.ToInt32(textBox8.Text);
                 int macost = maprice * manumber;
@@ -165,6 +174,7 @@ namespace kursproga
         {
             if (gbDel.Visible == false)
             {
+                tbDel.Text = null;
                 showgb(gbDel);
                 tbDel.Focus();
             }
@@ -187,14 +197,21 @@ namespace kursproga
             }
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            int id = Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value.ToString());
-            tbDel.Text = id.ToString();
-            textBox1.Text = textBox5.Text = dataGridView1.CurrentRow.Cells[1].Value.ToString();
-            textBox2.Text = textBox6.Text = dataGridView1.CurrentRow.Cells[2].Value.ToString();
-            textBox3.Text = textBox7.Text = dataGridView1.CurrentRow.Cells[3].Value.ToString();
-            textBox4.Text = textBox8.Text = dataGridView1.CurrentRow.Cells[4].Value.ToString();
+            try
+            {
+                int id = Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value.ToString());
+                tbDel.Text = id.ToString();
+                textBox1.Text = textBox5.Text = dataGridView1.CurrentRow.Cells[1].Value.ToString();
+                textBox2.Text = textBox6.Text = dataGridView1.CurrentRow.Cells[2].Value.ToString();
+                textBox3.Text = textBox7.Text = dataGridView1.CurrentRow.Cells[3].Value.ToString();
+                textBox4.Text = textBox8.Text = dataGridView1.CurrentRow.Cells[4].Value.ToString();
+            }
+            catch
+            {
+                MessageBox.Show("Выберите другую ячейку!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
+            }
         }
         private void hidegb()
         {

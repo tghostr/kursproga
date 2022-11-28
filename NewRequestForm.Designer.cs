@@ -31,10 +31,10 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NewRequestForm));
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btSave = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.gbDel = new System.Windows.Forms.GroupBox();
-            this.tbDel = new System.Windows.Forms.TextBox();
             this.btDel = new System.Windows.Forms.Button();
             this.gbIns = new System.Windows.Forms.GroupBox();
             this.textBox4 = new System.Windows.Forms.TextBox();
@@ -47,9 +47,9 @@
             this.tbSearch = new System.Windows.Forms.TextBox();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.dataGridView3 = new System.Windows.Forms.DataGridView();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel1.SuspendLayout();
-            this.gbDel.SuspendLayout();
             this.gbIns.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btSearch)).BeginInit();
@@ -66,12 +66,15 @@
             this.dataGridView1.RowTemplate.Height = 25;
             this.dataGridView1.Size = new System.Drawing.Size(300, 450);
             this.dataGridView1.TabIndex = 4;
+            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.btSave);
+            this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.radioButton2);
             this.panel1.Controls.Add(this.radioButton1);
-            this.panel1.Controls.Add(this.gbDel);
             this.panel1.Controls.Add(this.btDel);
             this.panel1.Controls.Add(this.gbIns);
             this.panel1.Controls.Add(this.btIns);
@@ -81,6 +84,28 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(200, 450);
             this.panel1.TabIndex = 21;
+            // 
+            // btSave
+            // 
+            this.btSave.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.btSave.Location = new System.Drawing.Point(0, 404);
+            this.btSave.Name = "btSave";
+            this.btSave.Size = new System.Drawing.Size(200, 23);
+            this.btSave.TabIndex = 26;
+            this.btSave.Text = "Создать заявку";
+            this.btSave.UseVisualStyleBackColor = true;
+            this.btSave.Click += new System.EventHandler(this.btSave_Click);
+            // 
+            // button1
+            // 
+            this.button1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.button1.Location = new System.Drawing.Point(0, 427);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(200, 23);
+            this.button1.TabIndex = 25;
+            this.button1.Text = "Выход";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // radioButton2
             // 
@@ -96,31 +121,15 @@
             // radioButton1
             // 
             this.radioButton1.AutoSize = true;
+            this.radioButton1.Checked = true;
             this.radioButton1.Location = new System.Drawing.Point(21, 302);
             this.radioButton1.Name = "radioButton1";
             this.radioButton1.Size = new System.Drawing.Size(100, 19);
             this.radioButton1.TabIndex = 23;
+            this.radioButton1.TabStop = true;
             this.radioButton1.Text = "Оборудовние";
             this.radioButton1.UseVisualStyleBackColor = true;
             this.radioButton1.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
-            // 
-            // gbDel
-            // 
-            this.gbDel.Controls.Add(this.tbDel);
-            this.gbDel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.gbDel.Location = new System.Drawing.Point(0, 212);
-            this.gbDel.Name = "gbDel";
-            this.gbDel.Size = new System.Drawing.Size(200, 35);
-            this.gbDel.TabIndex = 22;
-            this.gbDel.TabStop = false;
-            this.gbDel.Visible = false;
-            // 
-            // tbDel
-            // 
-            this.tbDel.Location = new System.Drawing.Point(10, 6);
-            this.tbDel.Name = "tbDel";
-            this.tbDel.Size = new System.Drawing.Size(180, 23);
-            this.tbDel.TabIndex = 22;
             // 
             // btDel
             // 
@@ -131,6 +140,7 @@
             this.btDel.TabIndex = 4;
             this.btDel.Text = "Удалить";
             this.btDel.UseVisualStyleBackColor = true;
+            this.btDel.Click += new System.EventHandler(this.btDel_Click);
             // 
             // gbIns
             // 
@@ -186,6 +196,7 @@
             this.btIns.TabIndex = 3;
             this.btIns.Text = "Добавить";
             this.btIns.UseVisualStyleBackColor = true;
+            this.btIns.Click += new System.EventHandler(this.btIns_Click);
             // 
             // panel2
             // 
@@ -218,12 +229,14 @@
             // 
             // dataGridView2
             // 
+            this.dataGridView2.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView2.Location = new System.Drawing.Point(300, 0);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.RowTemplate.Height = 25;
             this.dataGridView2.Size = new System.Drawing.Size(300, 450);
             this.dataGridView2.TabIndex = 22;
+            this.dataGridView2.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellClick);
             // 
             // dataGridView3
             // 
@@ -234,6 +247,16 @@
             this.dataGridView3.RowTemplate.Height = 25;
             this.dataGridView3.Size = new System.Drawing.Size(300, 450);
             this.dataGridView3.TabIndex = 23;
+            this.dataGridView3.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView3_CellClick);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(32, 370);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(38, 15);
+            this.label1.TabIndex = 27;
+            this.label1.Text = "label1";
             // 
             // NewRequestForm
             // 
@@ -250,8 +273,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            this.gbDel.ResumeLayout(false);
-            this.gbDel.PerformLayout();
             this.gbIns.ResumeLayout(false);
             this.gbIns.PerformLayout();
             this.panel2.ResumeLayout(false);
@@ -266,8 +287,6 @@
         #endregion
         private DataGridView dataGridView1;
         private Panel panel1;
-        private GroupBox gbDel;
-        private TextBox tbDel;
         private Button btDel;
         private GroupBox gbIns;
         private TextBox textBox4;
@@ -282,5 +301,8 @@
         private RadioButton radioButton2;
         private RadioButton radioButton1;
         private DataGridView dataGridView3;
+        private Button btSave;
+        private Button button1;
+        private Label label1;
     }
 }

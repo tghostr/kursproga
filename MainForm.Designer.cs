@@ -31,8 +31,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.tsbtEquip = new System.Windows.Forms.ToolStripButton();
-            this.tsbtStaff = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton4 = new System.Windows.Forms.ToolStripButton();
+            this.tsbtStaff = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.panelForm = new System.Windows.Forms.Panel();
@@ -64,17 +64,6 @@
             this.tsbtEquip.Text = "Оборудование";
             this.tsbtEquip.Click += new System.EventHandler(this.tsbtEquip_Click);
             // 
-            // tsbtStaff
-            // 
-            this.tsbtStaff.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.tsbtStaff.Image = ((System.Drawing.Image)(resources.GetObject("tsbtStaff.Image")));
-            this.tsbtStaff.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbtStaff.Name = "tsbtStaff";
-            this.tsbtStaff.Size = new System.Drawing.Size(66, 22);
-            this.tsbtStaff.Tag = "";
-            this.tsbtStaff.Text = "Персонал";
-            this.tsbtStaff.Click += new System.EventHandler(this.tsbtStaff_Click);
-            // 
             // toolStripButton4
             // 
             this.toolStripButton4.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
@@ -85,6 +74,17 @@
             this.toolStripButton4.Tag = "";
             this.toolStripButton4.Text = "Материалы";
             this.toolStripButton4.Click += new System.EventHandler(this.toolStripButton4_Click);
+            // 
+            // tsbtStaff
+            // 
+            this.tsbtStaff.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.tsbtStaff.Image = ((System.Drawing.Image)(resources.GetObject("tsbtStaff.Image")));
+            this.tsbtStaff.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbtStaff.Name = "tsbtStaff";
+            this.tsbtStaff.Size = new System.Drawing.Size(66, 22);
+            this.tsbtStaff.Tag = "";
+            this.tsbtStaff.Text = "Персонал";
+            this.tsbtStaff.Click += new System.EventHandler(this.tsbtStaff_Click);
             // 
             // toolStripButton3
             // 
@@ -131,6 +131,7 @@
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MainForm";
+            this.Load += new System.EventHandler(this.MainForm_Load);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.ResumeLayout(false);
