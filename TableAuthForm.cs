@@ -11,46 +11,44 @@ using System.Windows.Forms;
 
 namespace kursproga
 {
-    public partial class StaffForm : Form
+    public partial class TableAuthForm : Form
     {
         int id = 0;
-        public StaffForm()
+        public TableAuthForm()
         {
             InitializeComponent();
         }
 
-        private void StaffForm_Load(object sender, EventArgs e)
+        private void TableAuthForm_Load(object sender, EventArgs e)
         {
             DB db = new DB();
             DataTable table = new DataTable();
             MySqlDataAdapter adapter = new MySqlDataAdapter();
-
-            MySqlCommand command = new MySqlCommand("Select * from `staff`", db.getConnection());
-
+            MySqlCommand command = new MySqlCommand("Select * from `authorization`", db.getConnection());
             adapter.SelectCommand = command;
             adapter.Fill(table);
-
             dataGridView1.DataSource = table;
-            dataGridView1.Columns[0].HeaderText = "Код Сотрудника";
-            dataGridView1.Columns[1].HeaderText = "Имя";
-            dataGridView1.Columns[2].HeaderText = "Фамилияя";
-            dataGridView1.Columns[3].HeaderText = "Дата рождения";
+
+            dataGridView1.Columns[0].HeaderText = "Код Авторизации";
+            dataGridView1.Columns[1].HeaderText = "Логин";
+            dataGridView1.Columns[2].HeaderText = "Пароль";
+            dataGridView1.Columns[3].HeaderText = "Уровень доступа";
         }
         private void btSearch_Click(object sender, EventArgs e)
         {
             DB db = new DB();
             DataTable table = new DataTable();
             MySqlDataAdapter adapter = new MySqlDataAdapter();
-            MySqlCommand command = new MySqlCommand("SELECT * FROM staff WHERE CONCAT(`idStaff`, `name`, `surname`, `birthdate`) like '%" + tbSearch.Text + "%'", db.getConnection());
+            MySqlCommand command = new MySqlCommand("SELECT * FROM authorization WHERE CONCAT(`idAuthorization`, `login`, `pass`, `perms`) like '%" + tbSearch.Text + "%'", db.getConnection());
 
             adapter.SelectCommand = command;
             adapter.Fill(table);
             dataGridView1.DataSource = table;
 
-            dataGridView1.Columns[0].HeaderText = "Код Сотрудника";
-            dataGridView1.Columns[1].HeaderText = "Имя";
-            dataGridView1.Columns[2].HeaderText = "Фамилияя";
-            dataGridView1.Columns[3].HeaderText = "Дата рождения";
+            dataGridView1.Columns[0].HeaderText = "Код Авторизации";
+            dataGridView1.Columns[1].HeaderText = "Логин";
+            dataGridView1.Columns[2].HeaderText = "Пароль";
+            dataGridView1.Columns[3].HeaderText = "Уровень доступа";
 
         }
 
@@ -84,10 +82,8 @@ namespace kursproga
             if (gbUpd.Visible == true && !string.IsNullOrEmpty(textBox5.Text))
             {
                 if (dataGridView1.Rows.Count > 0) { id = Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value.ToString()); }
-                String DateB = dateTimePicker2.Text;
                 DB db = new DB();
-                MySqlCommand command = new MySqlCommand("UPDATE `staff` SET name='" + textBox5.Text + "', surname='" + textBox6.Text + "', birthdate=@DateB WHERE idStaff='" + id + "' ;", db.getConnection());
-                command.Parameters.Add("@DateB", MySqlDbType.Date).Value = DateB;
+                MySqlCommand command = new MySqlCommand("UPDATE `authorization` SET login='" + textBox5.Text + "', pass='" + textBox6.Text + "', perms='" + textBox7.Text + "' WHERE idAuthorization='"+id+"';", db.getConnection());
                 db.openConnection();
                 try
                 {
@@ -111,7 +107,7 @@ namespace kursproga
                         c.Text = null;
                     }
                 }
-                StaffForm_Load(sender, e);
+                TableAuthForm_Load(sender, e);
                 hidegb();
             }
         }
@@ -131,11 +127,9 @@ namespace kursproga
             }
             if (gbIns.Visible == true && !string.IsNullOrEmpty(textBox1.Text))
             {
-                String DateB = dateTimePicker1.Text;
                 DB db = new DB();
-                MySqlCommand command = new MySqlCommand("INSERT INTO `staff`(`name`, `surname`, `birthdate`) VALUES('" + textBox1.Text + "', '" + textBox2.Text + "', @DateB);", db.getConnection());
+                MySqlCommand command = new MySqlCommand("INSERT INTO `authorization`(`login`, `pass`, `perms`) VALUES('" + textBox1.Text + "', '" + textBox2.Text + "', '" + textBox3.Text + "');", db.getConnection());
                 db.openConnection();
-                command.Parameters.Add("@DateB", MySqlDbType.Date).Value = DateB;
                 try
                 {
                     if (command.ExecuteNonQuery() == 1)
@@ -158,7 +152,7 @@ namespace kursproga
                         c.Text = null;
                     }
                 }
-                StaffForm_Load(sender, e);
+                TableAuthForm_Load(sender, e);
                 hidegb();
             }
         }
@@ -174,7 +168,7 @@ namespace kursproga
             if (gbDel.Visible == true && !string.IsNullOrEmpty(tbDel.Text))
             {
                 DB db = new DB();
-                MySqlCommand command = new MySqlCommand("DELETE FROM staff WHERE idStaff = '" + tbDel.Text + "'", db.getConnection());
+                MySqlCommand command = new MySqlCommand("DELETE FROM authorization WHERE idAuthorization = '" + tbDel.Text + "'", db.getConnection());
                 db.openConnection();
                 if (command.ExecuteNonQuery() == 1)
                 {
@@ -185,7 +179,7 @@ namespace kursproga
                     MessageBox.Show("Данные не удалены");
                 }
                 tbDel.Text = null;
-                StaffForm_Load(sender, e);
+                TableAuthForm_Load(sender, e);
                 hidegb();
             }
         }
@@ -198,7 +192,7 @@ namespace kursproga
                 tbDel.Text = id.ToString();
                 textBox1.Text = textBox5.Text = dataGridView1.CurrentRow.Cells[1].Value.ToString();
                 textBox2.Text = textBox6.Text = dataGridView1.CurrentRow.Cells[2].Value.ToString();
-                dateTimePicker1.Text = dateTimePicker2.Text = dataGridView1.CurrentRow.Cells[3].Value.ToString();
+                textBox3.Text = textBox7.Text = dataGridView1.CurrentRow.Cells[3].Value.ToString();
             }
             catch
             {
@@ -224,6 +218,5 @@ namespace kursproga
             else
                 actMenu.Visible = false;
         }
-
     }
 }

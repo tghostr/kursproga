@@ -23,6 +23,7 @@ namespace kursproga
         
         private void EquipForm_Load(object sender, EventArgs e)
         {
+
             DB db = new DB();
             DataTable table = new DataTable();
             MySqlDataAdapter adapter = new MySqlDataAdapter();

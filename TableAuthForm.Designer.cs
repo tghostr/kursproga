@@ -1,6 +1,6 @@
 ﻿namespace kursproga
 {
-    partial class StaffForm
+    partial class TableAuthForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,19 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StaffForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TableAuthForm));
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
             this.gbDel = new System.Windows.Forms.GroupBox();
             this.tbDel = new System.Windows.Forms.TextBox();
             this.btDel = new System.Windows.Forms.Button();
             this.gbUpd = new System.Windows.Forms.GroupBox();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+            this.textBox7 = new System.Windows.Forms.TextBox();
             this.textBox6 = new System.Windows.Forms.TextBox();
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.btUpd = new System.Windows.Forms.Button();
             this.gbIns = new System.Windows.Forms.GroupBox();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.textBox3 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.btIns = new System.Windows.Forms.Button();
@@ -60,11 +60,12 @@
             // 
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Left;
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 25;
             this.dataGridView1.Size = new System.Drawing.Size(600, 450);
-            this.dataGridView1.TabIndex = 0;
+            this.dataGridView1.TabIndex = 1;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
             // panel1
@@ -86,7 +87,7 @@
             // 
             this.gbDel.Controls.Add(this.tbDel);
             this.gbDel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.gbDel.Location = new System.Drawing.Point(0, 297);
+            this.gbDel.Location = new System.Drawing.Point(0, 296);
             this.gbDel.Name = "gbDel";
             this.gbDel.Size = new System.Drawing.Size(200, 35);
             this.gbDel.TabIndex = 22;
@@ -103,7 +104,7 @@
             // btDel
             // 
             this.btDel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btDel.Location = new System.Drawing.Point(0, 275);
+            this.btDel.Location = new System.Drawing.Point(0, 274);
             this.btDel.Name = "btDel";
             this.btDel.Size = new System.Drawing.Size(200, 22);
             this.btDel.TabIndex = 4;
@@ -113,25 +114,24 @@
             // 
             // gbUpd
             // 
-            this.gbUpd.Controls.Add(this.dateTimePicker2);
+            this.gbUpd.Controls.Add(this.textBox7);
             this.gbUpd.Controls.Add(this.textBox6);
             this.gbUpd.Controls.Add(this.textBox5);
             this.gbUpd.Dock = System.Windows.Forms.DockStyle.Top;
             this.gbUpd.Location = new System.Drawing.Point(0, 184);
             this.gbUpd.Name = "gbUpd";
-            this.gbUpd.Size = new System.Drawing.Size(200, 91);
+            this.gbUpd.Size = new System.Drawing.Size(200, 90);
             this.gbUpd.TabIndex = 21;
             this.gbUpd.TabStop = false;
             this.gbUpd.Visible = false;
             // 
-            // dateTimePicker2
+            // textBox7
             // 
-            this.dateTimePicker2.CustomFormat = "yyyy-MM-dd";
-            this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker2.Location = new System.Drawing.Point(10, 62);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(180, 23);
-            this.dateTimePicker2.TabIndex = 2;
+            this.textBox7.Location = new System.Drawing.Point(10, 62);
+            this.textBox7.Multiline = true;
+            this.textBox7.Name = "textBox7";
+            this.textBox7.Size = new System.Drawing.Size(180, 22);
+            this.textBox7.TabIndex = 0;
             // 
             // textBox6
             // 
@@ -162,7 +162,7 @@
             // 
             // gbIns
             // 
-            this.gbIns.Controls.Add(this.dateTimePicker1);
+            this.gbIns.Controls.Add(this.textBox3);
             this.gbIns.Controls.Add(this.textBox2);
             this.gbIns.Controls.Add(this.textBox1);
             this.gbIns.Dock = System.Windows.Forms.DockStyle.Top;
@@ -173,15 +173,13 @@
             this.gbIns.TabStop = false;
             this.gbIns.Visible = false;
             // 
-            // dateTimePicker1
+            // textBox3
             // 
-            this.dateTimePicker1.CustomFormat = "yyyy-MM-dd";
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker1.Location = new System.Drawing.Point(10, 61);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(180, 23);
-            this.dateTimePicker1.TabIndex = 1;
-            this.dateTimePicker1.Value = new System.DateTime(2022, 11, 28, 23, 43, 5, 0);
+            this.textBox3.Location = new System.Drawing.Point(10, 62);
+            this.textBox3.Multiline = true;
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(180, 22);
+            this.textBox3.TabIndex = 0;
             // 
             // textBox2
             // 
@@ -241,17 +239,18 @@
             this.tbSearch.TabIndex = 21;
             this.tbSearch.TextChanged += new System.EventHandler(this.tbSearch_TextChanged);
             // 
-            // StaffForm
+            // TableAuthForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.dataGridView1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "StaffForm";
-            this.Text = "StaffForm";
-            this.Load += new System.EventHandler(this.StaffForm_Load);
+            this.Name = "TableAuthForm";
+            this.Text = "TableAuthForm";
+            this.Load += new System.EventHandler(this.TableAuthForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.panel1.ResumeLayout(false);
             this.gbDel.ResumeLayout(false);
@@ -275,17 +274,17 @@
         private TextBox tbDel;
         private Button btDel;
         private GroupBox gbUpd;
+        private TextBox textBox7;
         private TextBox textBox6;
         private TextBox textBox5;
         private Button btUpd;
         private GroupBox gbIns;
+        private TextBox textBox3;
         private TextBox textBox2;
         private TextBox textBox1;
         private Button btIns;
         private Panel panel2;
         private PictureBox btSearch;
         private TextBox tbSearch;
-        private DateTimePicker dateTimePicker1;
-        private DateTimePicker dateTimePicker2;
     }
 }

@@ -44,6 +44,7 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.btSearch = new System.Windows.Forms.PictureBox();
             this.tbSearch = new System.Windows.Forms.TextBox();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel1.SuspendLayout();
             this.gbDel.SuspendLayout();
@@ -81,7 +82,7 @@
             // 
             this.gbDel.Controls.Add(this.tbDel);
             this.gbDel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.gbDel.Location = new System.Drawing.Point(0, 234);
+            this.gbDel.Location = new System.Drawing.Point(0, 262);
             this.gbDel.Name = "gbDel";
             this.gbDel.Size = new System.Drawing.Size(200, 35);
             this.gbDel.TabIndex = 25;
@@ -98,7 +99,7 @@
             // btDel
             // 
             this.btDel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btDel.Location = new System.Drawing.Point(0, 212);
+            this.btDel.Location = new System.Drawing.Point(0, 240);
             this.btDel.Name = "btDel";
             this.btDel.Size = new System.Drawing.Size(200, 22);
             this.btDel.TabIndex = 24;
@@ -108,6 +109,7 @@
             // 
             // gbUpd
             // 
+            this.gbUpd.Controls.Add(this.dateTimePicker1);
             this.gbUpd.Controls.Add(this.textBox8);
             this.gbUpd.Controls.Add(this.textBox7);
             this.gbUpd.Controls.Add(this.textBox6);
@@ -115,14 +117,14 @@
             this.gbUpd.Dock = System.Windows.Forms.DockStyle.Top;
             this.gbUpd.Location = new System.Drawing.Point(0, 94);
             this.gbUpd.Name = "gbUpd";
-            this.gbUpd.Size = new System.Drawing.Size(200, 118);
+            this.gbUpd.Size = new System.Drawing.Size(200, 146);
             this.gbUpd.TabIndex = 23;
             this.gbUpd.TabStop = false;
             this.gbUpd.Visible = false;
             // 
             // textBox8
             // 
-            this.textBox8.Location = new System.Drawing.Point(10, 90);
+            this.textBox8.Location = new System.Drawing.Point(10, 119);
             this.textBox8.Multiline = true;
             this.textBox8.Name = "textBox8";
             this.textBox8.Size = new System.Drawing.Size(180, 22);
@@ -130,7 +132,7 @@
             // 
             // textBox7
             // 
-            this.textBox7.Location = new System.Drawing.Point(10, 62);
+            this.textBox7.Location = new System.Drawing.Point(10, 91);
             this.textBox7.Multiline = true;
             this.textBox7.Name = "textBox7";
             this.textBox7.Size = new System.Drawing.Size(180, 22);
@@ -138,7 +140,7 @@
             // 
             // textBox6
             // 
-            this.textBox6.Location = new System.Drawing.Point(10, 34);
+            this.textBox6.Location = new System.Drawing.Point(10, 63);
             this.textBox6.Multiline = true;
             this.textBox6.Name = "textBox6";
             this.textBox6.Size = new System.Drawing.Size(180, 22);
@@ -205,6 +207,13 @@
             this.tbSearch.TabIndex = 21;
             this.tbSearch.TextChanged += new System.EventHandler(this.tbSearch_TextChanged);
             // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Location = new System.Drawing.Point(10, 34);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(180, 23);
+            this.dateTimePicker1.TabIndex = 1;
+            // 
             // RequestForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -245,5 +254,6 @@
         private TextBox textBox7;
         private TextBox textBox6;
         private TextBox textBox5;
+        private DateTimePicker dateTimePicker1;
     }
 }

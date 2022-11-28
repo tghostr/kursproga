@@ -21,7 +21,7 @@ namespace kursproga
 
             MySqlDataAdapter adapter = new MySqlDataAdapter();
 
-            MySqlCommand command = new MySqlCommand("Select `perms` from `authorization` where `login` = @uL AND `pass` = @uP AND `perms` = 0", db.getConnection());
+            MySqlCommand command = new MySqlCommand("Select `idstaff` from `authorization` where `login` = @uL AND `pass` = @uP AND `perms` = 0", db.getConnection());
             command.Parameters.Add("@uL", MySqlDbType.VarChar).Value = loginUser;
             command.Parameters.Add("@uP", MySqlDbType.VarChar).Value = passUser;
 
@@ -37,7 +37,7 @@ namespace kursproga
             }
             else
             {
-                command = new MySqlCommand("Select `perms` from `authorization` where `login` = @uL AND `pass` = @uP AND `perms` = 1", db.getConnection());
+                command = new MySqlCommand("Select `idstaff` from `authorization` where `login` = @uL AND `pass` = @uP AND `perms` = 1", db.getConnection());
                 command.Parameters.Add("@uL", MySqlDbType.VarChar).Value = loginUser;
                 command.Parameters.Add("@uP", MySqlDbType.VarChar).Value = passUser;
 
@@ -53,7 +53,7 @@ namespace kursproga
                 }
                 else
                 {
-                    command = new MySqlCommand("Select `perms` from `authorization` where `login` = @uL AND `pass` = @uP AND `perms` = 2", db.getConnection());
+                    command = new MySqlCommand("Select `idstaff` from `authorization` where `login` = @uL AND `pass` = @uP AND `perms` = 2", db.getConnection());
                     command.Parameters.Add("@uL", MySqlDbType.VarChar).Value = loginUser;
                     command.Parameters.Add("@uP", MySqlDbType.VarChar).Value = passUser;
 

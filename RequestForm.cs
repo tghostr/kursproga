@@ -25,18 +25,20 @@ namespace kursproga
             DataTable table = new DataTable();
             MySqlDataAdapter adapter = new MySqlDataAdapter();
 
-            MySqlCommand command = new MySqlCommand("Select * from `request`", db.getConnection());
+            MySqlCommand command = new MySqlCommand("select idrequest, `staff`.name as name, `staff`.surname as surname, reqdata, `equipment`.emname as equipment, `material`.maname as material, reqnumber from request inner join `staff` on `staff`.idStaff = `request`.staff_idStaff inner join `equipment` on `equipment`.idequipment = `request`.equipment_idequipment inner join `material` on `material`.idmaterial = `request`.material_idmaterial", db.getConnection());
 
             adapter.SelectCommand = command;
             adapter.Fill(table);
             dataGridView1.DataSource = table;
 
             dataGridView1.Columns[0].HeaderText = "Код Заявки";
-            dataGridView1.Columns[1].HeaderText = "Сотрудник";
-            dataGridView1.Columns[2].HeaderText = "Дата";
-            dataGridView1.Columns[3].HeaderText = "Оборудование";
-            dataGridView1.Columns[4].HeaderText = "Материал";
-            dataGridView1.Columns[5].HeaderText = "Количество";
+            dataGridView1.Columns[1].HeaderText = "Имя";
+            dataGridView1.Columns[2].HeaderText = "Фамилия";
+            dataGridView1.Columns[3].HeaderText = "Дата";
+            dataGridView1.Columns[4].HeaderText = "Оборудование";
+            dataGridView1.Columns[5].HeaderText = "Материал";
+            dataGridView1.Columns[6].HeaderText = "Количество";
+
         }
 
         private void btIns_Click(object sender, EventArgs e)
@@ -49,18 +51,19 @@ namespace kursproga
             DB db = new DB();
             DataTable table = new DataTable();
             MySqlDataAdapter adapter = new MySqlDataAdapter();
-            MySqlCommand command = new MySqlCommand("SELECT * FROM request WHERE CONCAT(`idrequest`, `staff_idStaff`, `reqdata`, `equipment_idequipment`, `material_idmaterial`, `reqnumber`) like '%" + tbSearch.Text + "%'", db.getConnection());
+            MySqlCommand command = new MySqlCommand("select idrequest, `staff`.name as name, `staff`.surname as surname, reqdata, `equipment`.emname as emname, `material`.maname as maname, reqnumber from request inner join `staff` on `staff`.idStaff = `request`.staff_idStaff inner join `equipment` on `equipment`.idequipment = `request`.equipment_idequipment inner join `material` on `material`.idmaterial = `request`.material_idmaterial WHERE CONCAT(`idrequest`, `name`, `surname`, `reqdata`, `emname`, `maname`, `reqnumber`) like '%"+tbSearch.Text+"%'", db.getConnection());
 
             adapter.SelectCommand = command;
             adapter.Fill(table);
             dataGridView1.DataSource = table;
 
-            dataGridView1.Columns[0].HeaderText = "Код Оборудования";
-            dataGridView1.Columns[1].HeaderText = "Название";
-            dataGridView1.Columns[2].HeaderText = "Единица измерения";
-            dataGridView1.Columns[3].HeaderText = "Цена";
-            dataGridView1.Columns[4].HeaderText = "Количество";
-            dataGridView1.Columns[5].HeaderText = "Стоимость";
+            dataGridView1.Columns[0].HeaderText = "Код Заявки";
+            dataGridView1.Columns[1].HeaderText = "Имя";
+            dataGridView1.Columns[2].HeaderText = "Фамилия";
+            dataGridView1.Columns[3].HeaderText = "Дата";
+            dataGridView1.Columns[4].HeaderText = "Оборудование";
+            dataGridView1.Columns[5].HeaderText = "Материал";
+            dataGridView1.Columns[6].HeaderText = "Количество";
 
         }
 
@@ -156,11 +159,8 @@ namespace kursproga
             if (gbUpd.Visible == true && !string.IsNullOrEmpty(textBox5.Text))
             {
                 if (dataGridView1.Rows.Count > 0) { id = Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value.ToString()); }
-                int emprice = Convert.ToInt32(textBox7.Text);
-                int emnumber = Convert.ToInt32(textBox8.Text);
-                int emcost = emprice * emnumber;
                 DB db = new DB();
-                MySqlCommand command = new MySqlCommand("UPDATE `request` SET emname='" + textBox5.Text + "', emunit='" + textBox6.Text + "', emprice='" + textBox7.Text + "', emnumber='" + textBox8.Text + "', emcost='" + emcost + "' WHERE idrequest='" + id + "' ;", db.getConnection());
+                MySqlCommand command = new MySqlCommand("UPDATE `request` SET staff_idStaff='" + textBox5.Text + "', reqdata='" + dateTimePicker1.Text + "', equipment_idequipment='" + textBox6.Text + "', material_idmaterial='" + textBox7.Text + "', reqnumber='" + textBox8.Text + "' WHERE idrequest='" + id + "' ;", db.getConnection());
                 db.openConnection();
                 try
                 {

@@ -35,6 +35,7 @@
             this.tsbtStaff = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.panelForm = new System.Windows.Forms.Panel();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -45,6 +46,7 @@
             this.tsbtEquip,
             this.toolStripButton4,
             this.tsbtStaff,
+            this.toolStripButton1,
             this.toolStripButton3,
             this.toolStripButton2});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
@@ -109,6 +111,16 @@
             this.toolStripButton2.Text = "Выход";
             this.toolStripButton2.Click += new System.EventHandler(this.toolStripButton2_Click);
             // 
+            // toolStripButton1
+            // 
+            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
+            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton1.Name = "toolStripButton1";
+            this.toolStripButton1.Size = new System.Drawing.Size(82, 22);
+            this.toolStripButton1.Text = "Авторизация";
+            this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
+            // 
             // panelForm
             // 
             this.panelForm.Location = new System.Drawing.Point(0, 25);
@@ -147,5 +159,6 @@
         private ToolStripButton toolStripButton3;
         private ToolStripButton toolStripButton2;
         private Panel panelForm;
+        private ToolStripButton toolStripButton1;
     }
 }
