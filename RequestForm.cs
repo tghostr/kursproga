@@ -17,6 +17,7 @@ namespace kursproga
         public RequestForm()
         {
             InitializeComponent();
+            tbSearch.MaxLength = 32;
         }
 
         private void RequestForm_Load(object sender, EventArgs e)
@@ -25,19 +26,18 @@ namespace kursproga
             DataTable table = new DataTable();
             MySqlDataAdapter adapter = new MySqlDataAdapter();
 
-            MySqlCommand command = new MySqlCommand("select idrequest, `staff`.name as name, `staff`.surname as surname, reqdata, `equipment`.emname as equipment, `material`.maname as material, reqnumber from request inner join `staff` on `staff`.idStaff = `request`.staff_idStaff inner join `equipment` on `equipment`.idequipment = `request`.equipment_idequipment inner join `material` on `material`.idmaterial = `request`.material_idmaterial", db.getConnection());
+            MySqlCommand command = new MySqlCommand("select * from `request`", db.getConnection());
 
             adapter.SelectCommand = command;
             adapter.Fill(table);
             dataGridView1.DataSource = table;
 
             dataGridView1.Columns[0].HeaderText = "Код Заявки";
-            dataGridView1.Columns[1].HeaderText = "Имя";
-            dataGridView1.Columns[2].HeaderText = "Фамилия";
-            dataGridView1.Columns[3].HeaderText = "Дата";
-            dataGridView1.Columns[4].HeaderText = "Оборудование";
-            dataGridView1.Columns[5].HeaderText = "Материал";
-            dataGridView1.Columns[6].HeaderText = "Количество";
+            dataGridView1.Columns[1].HeaderText = "Код Сотрудника";
+            dataGridView1.Columns[2].HeaderText = "Дата";
+            dataGridView1.Columns[3].HeaderText = "Оборудование";
+            dataGridView1.Columns[4].HeaderText = "Материал";
+            dataGridView1.Columns[5].HeaderText = "Количество";
 
         }
 
@@ -51,19 +51,18 @@ namespace kursproga
             DB db = new DB();
             DataTable table = new DataTable();
             MySqlDataAdapter adapter = new MySqlDataAdapter();
-            MySqlCommand command = new MySqlCommand("select idrequest, `staff`.name as name, `staff`.surname as surname, reqdata, `equipment`.emname as emname, `material`.maname as maname, reqnumber from request inner join `staff` on `staff`.idStaff = `request`.staff_idStaff inner join `equipment` on `equipment`.idequipment = `request`.equipment_idequipment inner join `material` on `material`.idmaterial = `request`.material_idmaterial WHERE CONCAT(`idrequest`, `name`, `surname`, `reqdata`, `emname`, `maname`, `reqnumber`) like '%"+tbSearch.Text+"%'", db.getConnection());
+            MySqlCommand command = new MySqlCommand("select * from request WHERE CONCAT(`idrequest`, `staff_idStaff`, `reqdata`, `equipment_idequipment`, `material_idmaterial`, `reqnumber`) like '%" + tbSearch.Text+"%'", db.getConnection());
 
             adapter.SelectCommand = command;
             adapter.Fill(table);
             dataGridView1.DataSource = table;
 
             dataGridView1.Columns[0].HeaderText = "Код Заявки";
-            dataGridView1.Columns[1].HeaderText = "Имя";
-            dataGridView1.Columns[2].HeaderText = "Фамилия";
-            dataGridView1.Columns[3].HeaderText = "Дата";
-            dataGridView1.Columns[4].HeaderText = "Оборудование";
-            dataGridView1.Columns[5].HeaderText = "Материал";
-            dataGridView1.Columns[6].HeaderText = "Количество";
+            dataGridView1.Columns[1].HeaderText = "Код Сотрудника";
+            dataGridView1.Columns[2].HeaderText = "Дата";
+            dataGridView1.Columns[3].HeaderText = "Оборудование";
+            dataGridView1.Columns[4].HeaderText = "Материал";
+            dataGridView1.Columns[5].HeaderText = "Количество";
 
         }
 
@@ -80,22 +79,30 @@ namespace kursproga
                 showgb(gbDel);
                 tbDel.Focus();
             }
-            if (gbDel.Visible == true && !string.IsNullOrEmpty(tbDel.Text))
+            if (gbDel.Visible == true)
             {
-                DB db = new DB();
-                MySqlCommand command = new MySqlCommand("DELETE FROM request WHERE idrequest = '" + tbDel.Text + "'", db.getConnection());
-                db.openConnection();
-                if (command.ExecuteNonQuery() == 1)
+                if (!string.IsNullOrEmpty(tbDel.Text))
                 {
-                    MessageBox.Show("Данные удалены");
+                    DB db = new DB();
+                    MySqlCommand command = new MySqlCommand("DELETE FROM request WHERE idrequest = '" + tbDel.Text + "'", db.getConnection());
+                    db.openConnection();
+                    if (command.ExecuteNonQuery() == 1)
+                    {
+                        MessageBox.Show("Данные удалены");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Данные не удалены");
+                    }
+                    tbDel.Text = null;
+                    RequestForm_Load(sender, e);
+                    hidegb();
                 }
-                else
+                else if (string.IsNullOrEmpty(tbDel.Text))
                 {
-                    MessageBox.Show("Данные не удалены");
+                    MessageBox.Show("Заполните поле", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
+                    return;
                 }
-                tbDel.Text = null;
-                RequestForm_Load(sender, e);
-                hidegb();
             }
         }
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -134,8 +141,6 @@ namespace kursproga
 
         private void btUpd_Click(object sender, EventArgs e)
         {
-
-            //if(dataGridView1.Rows.Count > 0) {  id = Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value.ToString()); }
             if (gbUpd.Visible == false)
             {
                 try
@@ -158,34 +163,42 @@ namespace kursproga
             }
             if (gbUpd.Visible == true && !string.IsNullOrEmpty(textBox5.Text))
             {
-                if (dataGridView1.Rows.Count > 0) { id = Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value.ToString()); }
-                DB db = new DB();
-                MySqlCommand command = new MySqlCommand("UPDATE `request` SET staff_idStaff='" + textBox5.Text + "', reqdata='" + dateTimePicker1.Text + "', equipment_idequipment='" + textBox6.Text + "', material_idmaterial='" + textBox7.Text + "', reqnumber='" + textBox8.Text + "' WHERE idrequest='" + id + "' ;", db.getConnection());
-                db.openConnection();
-                try
+                if(!string.IsNullOrEmpty(textBox5.Text) && !string.IsNullOrEmpty(textBox6.Text) && !string.IsNullOrEmpty(dateTimePicker1.Text) && !string.IsNullOrEmpty(textBox7.Text) && !string.IsNullOrEmpty(textBox8.Text))
                 {
-                    if (command.ExecuteNonQuery() == 1)
+                    if (dataGridView1.Rows.Count > 0) { id = Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value.ToString()); }
+                    DB db = new DB();
+                    MySqlCommand command = new MySqlCommand("UPDATE `request` SET staff_idStaff='" + textBox5.Text + "', reqdata='" + dateTimePicker1.Text + "', equipment_idequipment='" + textBox6.Text + "', material_idmaterial='" + textBox7.Text + "', reqnumber='" + textBox8.Text + "' WHERE idrequest='" + id + "' ;", db.getConnection());
+                    db.openConnection();
+                    try
                     {
-                        MessageBox.Show("Данные обновлены");
+                        if (command.ExecuteNonQuery() == 1)
+                        {
+                            MessageBox.Show("Данные обновлены");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Данные не обновлены");
+                        }
                     }
-                    else
+                    catch (Exception ex)
                     {
-                        MessageBox.Show("Данные не обновлены");
+                        MessageBox.Show(ex.Message);
                     }
+                    foreach (Control c in gbUpd.Controls)
+                    {
+                        if (c is TextBox)
+                        {
+                            c.Text = null;
+                        }
+                    }
+                    RequestForm_Load(sender, e);
+                    hidegb();
                 }
-                catch (Exception ex)
+                else if (string.IsNullOrEmpty(textBox5.Text) || string.IsNullOrEmpty(textBox6.Text) || string.IsNullOrEmpty(dateTimePicker1.Text) || string.IsNullOrEmpty(textBox7.Text) || string.IsNullOrEmpty(textBox8.Text))
                 {
-                    MessageBox.Show(ex.Message);
+                    MessageBox.Show("Все поля должны быть заполнены!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
+                    return;
                 }
-                foreach (Control c in gbUpd.Controls)
-                {
-                    if (c is TextBox)
-                    {
-                        c.Text = null;
-                    }
-                }
-                RequestForm_Load(sender, e);
-                hidegb();
             }
         }
     }

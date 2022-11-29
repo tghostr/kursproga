@@ -35,6 +35,7 @@
             this.tbDel = new System.Windows.Forms.TextBox();
             this.btDel = new System.Windows.Forms.Button();
             this.gbUpd = new System.Windows.Forms.GroupBox();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.textBox8 = new System.Windows.Forms.TextBox();
             this.textBox7 = new System.Windows.Forms.TextBox();
             this.textBox6 = new System.Windows.Forms.TextBox();
@@ -44,7 +45,6 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.btSearch = new System.Windows.Forms.PictureBox();
             this.tbSearch = new System.Windows.Forms.TextBox();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel1.SuspendLayout();
             this.gbDel.SuspendLayout();
@@ -93,6 +93,7 @@
             // 
             this.tbDel.Location = new System.Drawing.Point(10, 6);
             this.tbDel.Name = "tbDel";
+            this.tbDel.PlaceholderText = "Код Заявки";
             this.tbDel.Size = new System.Drawing.Size(180, 23);
             this.tbDel.TabIndex = 22;
             // 
@@ -122,35 +123,49 @@
             this.gbUpd.TabStop = false;
             this.gbUpd.Visible = false;
             // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Location = new System.Drawing.Point(10, 34);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(180, 23);
+            this.dateTimePicker1.TabIndex = 1;
+            // 
             // textBox8
             // 
             this.textBox8.Location = new System.Drawing.Point(10, 119);
             this.textBox8.Multiline = true;
             this.textBox8.Name = "textBox8";
+            this.textBox8.PlaceholderText = "Количество";
             this.textBox8.Size = new System.Drawing.Size(180, 22);
             this.textBox8.TabIndex = 0;
             // 
             // textBox7
             // 
+            this.textBox7.Enabled = false;
             this.textBox7.Location = new System.Drawing.Point(10, 91);
             this.textBox7.Multiline = true;
             this.textBox7.Name = "textBox7";
+            this.textBox7.PlaceholderText = "Материал";
             this.textBox7.Size = new System.Drawing.Size(180, 22);
             this.textBox7.TabIndex = 0;
             // 
             // textBox6
             // 
+            this.textBox6.Enabled = false;
             this.textBox6.Location = new System.Drawing.Point(10, 63);
             this.textBox6.Multiline = true;
             this.textBox6.Name = "textBox6";
+            this.textBox6.PlaceholderText = "Оборудование";
             this.textBox6.Size = new System.Drawing.Size(180, 22);
             this.textBox6.TabIndex = 0;
             // 
             // textBox5
             // 
+            this.textBox5.Enabled = false;
             this.textBox5.Location = new System.Drawing.Point(10, 6);
             this.textBox5.Multiline = true;
             this.textBox5.Name = "textBox5";
+            this.textBox5.PlaceholderText = "Код Сотрудника";
             this.textBox5.Size = new System.Drawing.Size(180, 22);
             this.textBox5.TabIndex = 0;
             // 
@@ -202,17 +217,10 @@
             this.tbSearch.Location = new System.Drawing.Point(10, 14);
             this.tbSearch.Multiline = true;
             this.tbSearch.Name = "tbSearch";
-            this.tbSearch.PlaceholderText = "Search";
+            this.tbSearch.PlaceholderText = "Поиск";
             this.tbSearch.Size = new System.Drawing.Size(180, 22);
             this.tbSearch.TabIndex = 21;
             this.tbSearch.TextChanged += new System.EventHandler(this.tbSearch_TextChanged);
-            // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(10, 34);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(180, 23);
-            this.dateTimePicker1.TabIndex = 1;
             // 
             // RequestForm
             // 

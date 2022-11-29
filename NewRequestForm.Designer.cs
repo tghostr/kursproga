@@ -31,7 +31,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NewRequestForm));
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
             this.btSave = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
@@ -70,7 +69,6 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.btSave);
             this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.radioButton2);
@@ -84,15 +82,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(200, 450);
             this.panel1.TabIndex = 21;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(32, 370);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(38, 15);
-            this.label1.TabIndex = 27;
-            this.label1.Text = "label1";
             // 
             // btSave
             // 
@@ -114,13 +103,12 @@
             this.button1.TabIndex = 25;
             this.button1.Text = "Выход";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Visible = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // radioButton2
             // 
             this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(21, 327);
+            this.radioButton2.Location = new System.Drawing.Point(10, 254);
             this.radioButton2.Name = "radioButton2";
             this.radioButton2.Size = new System.Drawing.Size(80, 19);
             this.radioButton2.TabIndex = 23;
@@ -132,7 +120,7 @@
             // 
             this.radioButton1.AutoSize = true;
             this.radioButton1.Checked = true;
-            this.radioButton1.Location = new System.Drawing.Point(21, 302);
+            this.radioButton1.Location = new System.Drawing.Point(10, 229);
             this.radioButton1.Name = "radioButton1";
             this.radioButton1.Size = new System.Drawing.Size(100, 19);
             this.radioButton1.TabIndex = 23;
@@ -170,6 +158,7 @@
             this.textBox4.Location = new System.Drawing.Point(10, 90);
             this.textBox4.Multiline = true;
             this.textBox4.Name = "textBox4";
+            this.textBox4.PlaceholderText = "Количество";
             this.textBox4.Size = new System.Drawing.Size(180, 22);
             this.textBox4.TabIndex = 0;
             // 
@@ -178,6 +167,7 @@
             this.textBox3.Location = new System.Drawing.Point(10, 62);
             this.textBox3.Multiline = true;
             this.textBox3.Name = "textBox3";
+            this.textBox3.PlaceholderText = "Единица измерения";
             this.textBox3.Size = new System.Drawing.Size(180, 22);
             this.textBox3.TabIndex = 0;
             // 
@@ -186,6 +176,7 @@
             this.textBox2.Location = new System.Drawing.Point(10, 34);
             this.textBox2.Multiline = true;
             this.textBox2.Name = "textBox2";
+            this.textBox2.PlaceholderText = "Название";
             this.textBox2.Size = new System.Drawing.Size(180, 22);
             this.textBox2.TabIndex = 0;
             // 
@@ -194,6 +185,7 @@
             this.textBox1.Location = new System.Drawing.Point(10, 6);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
+            this.textBox1.PlaceholderText = "Код";
             this.textBox1.Size = new System.Drawing.Size(180, 22);
             this.textBox1.TabIndex = 0;
             // 
@@ -233,7 +225,7 @@
             this.tbSearch.Location = new System.Drawing.Point(10, 14);
             this.tbSearch.Multiline = true;
             this.tbSearch.Name = "tbSearch";
-            this.tbSearch.PlaceholderText = "Search";
+            this.tbSearch.PlaceholderText = "Поиск";
             this.tbSearch.Size = new System.Drawing.Size(180, 22);
             this.tbSearch.TabIndex = 21;
             // 
@@ -306,6 +298,5 @@
         private DataGridView dataGridView3;
         private Button btSave;
         private Button button1;
-        private Label label1;
     }
 }

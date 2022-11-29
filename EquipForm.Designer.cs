@@ -140,6 +140,7 @@
             // 
             this.tbDel.Location = new System.Drawing.Point(10, 6);
             this.tbDel.Name = "tbDel";
+            this.tbDel.PlaceholderText = "Код Оборудования";
             this.tbDel.Size = new System.Drawing.Size(180, 23);
             this.tbDel.TabIndex = 22;
             // 
@@ -173,6 +174,7 @@
             this.textBox8.Location = new System.Drawing.Point(10, 90);
             this.textBox8.Multiline = true;
             this.textBox8.Name = "textBox8";
+            this.textBox8.PlaceholderText = "Количество";
             this.textBox8.Size = new System.Drawing.Size(180, 22);
             this.textBox8.TabIndex = 0;
             // 
@@ -181,6 +183,7 @@
             this.textBox7.Location = new System.Drawing.Point(10, 62);
             this.textBox7.Multiline = true;
             this.textBox7.Name = "textBox7";
+            this.textBox7.PlaceholderText = "Цена";
             this.textBox7.Size = new System.Drawing.Size(180, 22);
             this.textBox7.TabIndex = 0;
             // 
@@ -189,6 +192,7 @@
             this.textBox6.Location = new System.Drawing.Point(10, 34);
             this.textBox6.Multiline = true;
             this.textBox6.Name = "textBox6";
+            this.textBox6.PlaceholderText = "Единица измерения";
             this.textBox6.Size = new System.Drawing.Size(180, 22);
             this.textBox6.TabIndex = 0;
             // 
@@ -197,6 +201,7 @@
             this.textBox5.Location = new System.Drawing.Point(10, 6);
             this.textBox5.Multiline = true;
             this.textBox5.Name = "textBox5";
+            this.textBox5.PlaceholderText = "Название";
             this.textBox5.Size = new System.Drawing.Size(180, 22);
             this.textBox5.TabIndex = 0;
             // 
@@ -230,6 +235,7 @@
             this.textBox4.Location = new System.Drawing.Point(10, 90);
             this.textBox4.Multiline = true;
             this.textBox4.Name = "textBox4";
+            this.textBox4.PlaceholderText = "Количество";
             this.textBox4.Size = new System.Drawing.Size(180, 22);
             this.textBox4.TabIndex = 0;
             // 
@@ -238,6 +244,7 @@
             this.textBox3.Location = new System.Drawing.Point(10, 62);
             this.textBox3.Multiline = true;
             this.textBox3.Name = "textBox3";
+            this.textBox3.PlaceholderText = "Цена";
             this.textBox3.Size = new System.Drawing.Size(180, 22);
             this.textBox3.TabIndex = 0;
             // 
@@ -246,6 +253,7 @@
             this.textBox2.Location = new System.Drawing.Point(10, 34);
             this.textBox2.Multiline = true;
             this.textBox2.Name = "textBox2";
+            this.textBox2.PlaceholderText = "Единица измерения";
             this.textBox2.Size = new System.Drawing.Size(180, 22);
             this.textBox2.TabIndex = 0;
             // 
@@ -254,6 +262,7 @@
             this.textBox1.Location = new System.Drawing.Point(10, 6);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
+            this.textBox1.PlaceholderText = "Название";
             this.textBox1.Size = new System.Drawing.Size(180, 22);
             this.textBox1.TabIndex = 0;
             // 
@@ -293,7 +302,7 @@
             this.tbSearch.Location = new System.Drawing.Point(10, 14);
             this.tbSearch.Multiline = true;
             this.tbSearch.Name = "tbSearch";
-            this.tbSearch.PlaceholderText = "Search";
+            this.tbSearch.PlaceholderText = "Поиск";
             this.tbSearch.Size = new System.Drawing.Size(180, 22);
             this.tbSearch.TabIndex = 21;
             this.tbSearch.TextChanged += new System.EventHandler(this.tbSearch_TextChanged);

@@ -8,6 +8,8 @@ namespace kursproga
         public AuthForm()
         {
             InitializeComponent();
+            txtLog.MaxLength = 10;
+            txtPass.MaxLength = 10;
         }
         
         private void btAuth_Click(object sender, EventArgs e)
@@ -89,6 +91,11 @@ namespace kursproga
         private void btExit_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void txtLog_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

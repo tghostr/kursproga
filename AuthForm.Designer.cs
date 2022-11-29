@@ -53,6 +53,7 @@
             this.txtLog.PlaceholderText = "Логин";
             this.txtLog.Size = new System.Drawing.Size(156, 23);
             this.txtLog.TabIndex = 2;
+            this.txtLog.TextChanged += new System.EventHandler(this.txtLog_TextChanged);
             // 
             // txtPass
             // 

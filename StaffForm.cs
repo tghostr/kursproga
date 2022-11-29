@@ -17,6 +17,7 @@ namespace kursproga
         public StaffForm()
         {
             InitializeComponent();
+            tbSearch.MaxLength = 32;
         }
 
         private void StaffForm_Load(object sender, EventArgs e)
@@ -66,7 +67,6 @@ namespace kursproga
                 try
                 {
                     showgb(gbUpd);
-                    gbUpd.Visible = true;
                     textBox5.Focus();
                     foreach (Control c in gbUpd.Controls)
                     {
@@ -81,38 +81,46 @@ namespace kursproga
                     MessageBox.Show("В таблице отсутствуют записи!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
                 }
             }
-            if (gbUpd.Visible == true && !string.IsNullOrEmpty(textBox5.Text))
+            if (gbUpd.Visible == true)
             {
-                if (dataGridView1.Rows.Count > 0) { id = Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value.ToString()); }
                 String DateB = dateTimePicker2.Text;
-                DB db = new DB();
-                MySqlCommand command = new MySqlCommand("UPDATE `staff` SET name='" + textBox5.Text + "', surname='" + textBox6.Text + "', birthdate=@DateB WHERE idStaff='" + id + "' ;", db.getConnection());
-                command.Parameters.Add("@DateB", MySqlDbType.Date).Value = DateB;
-                db.openConnection();
-                try
+                if (!string.IsNullOrEmpty(textBox5.Text) && !string.IsNullOrEmpty(textBox6.Text) && !string.IsNullOrEmpty(dateTimePicker2.Text))
                 {
-                    if (command.ExecuteNonQuery() == 1)
+                    if (dataGridView1.Rows.Count > 0) { id = Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value.ToString()); }
+                    DB db = new DB();
+                    MySqlCommand command = new MySqlCommand("UPDATE `staff` SET name='" + textBox5.Text + "', surname='" + textBox6.Text + "', birthdate=@DateB WHERE idStaff='" + id + "' ;", db.getConnection());
+                    command.Parameters.Add("@DateB", MySqlDbType.Date).Value = DateB;
+                    db.openConnection();
+                    try
                     {
-                        MessageBox.Show("Данные обновлены");
+                        if (command.ExecuteNonQuery() == 1)
+                        {
+                            MessageBox.Show("Данные обновлены");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Данные не обновлены");
+                        }
                     }
-                    else
+                    catch (Exception ex)
                     {
-                        MessageBox.Show("Данные не обновлены");
+                        MessageBox.Show(ex.Message);
                     }
+                    foreach (Control c in gbUpd.Controls)
+                    {
+                        if (c is TextBox)
+                        {
+                            c.Text = null;
+                        }
+                    }
+                    StaffForm_Load(sender, e);
+                    hidegb();
                 }
-                catch (Exception ex)
+                else if (string.IsNullOrEmpty(textBox5.Text) || string.IsNullOrEmpty(textBox6.Text) || string.IsNullOrEmpty(dateTimePicker2.Text))
                 {
-                    MessageBox.Show(ex.Message);
+                    MessageBox.Show("Все поля должны быть заполнены!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
+                    return;
                 }
-                foreach (Control c in gbUpd.Controls)
-                {
-                    if (c is TextBox)
-                    {
-                        c.Text = null;
-                    }
-                }
-                StaffForm_Load(sender, e);
-                hidegb();
             }
         }
         private void btIns_Click(object sender, EventArgs e)
@@ -129,37 +137,45 @@ namespace kursproga
                     }
                 }
             }
-            if (gbIns.Visible == true && !string.IsNullOrEmpty(textBox1.Text))
+            if (gbIns.Visible == true)
             {
                 String DateB = dateTimePicker1.Text;
-                DB db = new DB();
-                MySqlCommand command = new MySqlCommand("INSERT INTO `staff`(`name`, `surname`, `birthdate`) VALUES('" + textBox1.Text + "', '" + textBox2.Text + "', @DateB);", db.getConnection());
-                db.openConnection();
-                command.Parameters.Add("@DateB", MySqlDbType.Date).Value = DateB;
-                try
+                if (!string.IsNullOrEmpty(textBox1.Text) && !string.IsNullOrEmpty(textBox2.Text) && !string.IsNullOrEmpty(dateTimePicker1.Text))
                 {
-                    if (command.ExecuteNonQuery() == 1)
+                    DB db = new DB();
+                    MySqlCommand command = new MySqlCommand("INSERT INTO `staff`(`name`, `surname`, `birthdate`) VALUES('" + textBox1.Text + "', '" + textBox2.Text + "', @DateB);", db.getConnection());
+                    db.openConnection();
+                    command.Parameters.Add("@DateB", MySqlDbType.Date).Value = DateB;
+                    try
                     {
-                        MessageBox.Show("Данные добавлены");
+                        if (command.ExecuteNonQuery() == 1)
+                        {
+                            MessageBox.Show("Данные добавлены");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Данные не добавлены");
+                        }
                     }
-                    else
+                    catch (Exception ex)
                     {
-                        MessageBox.Show("Данные не добавлены");
+                        MessageBox.Show(ex.Message);
                     }
+                    foreach (Control c in gbIns.Controls)
+                    {
+                        if (c is TextBox)
+                        {
+                            c.Text = null;
+                        }
+                    }
+                    StaffForm_Load(sender, e);
+                    hidegb();
                 }
-                catch (Exception ex)
+                else if (string.IsNullOrEmpty(textBox5.Text) || string.IsNullOrEmpty(textBox6.Text) || string.IsNullOrEmpty(dateTimePicker2.Text))
                 {
-                    MessageBox.Show(ex.Message);
+                    MessageBox.Show("Все поля должны быть заполнены!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
+                    return;
                 }
-                foreach (Control c in gbIns.Controls)
-                {
-                    if (c is TextBox)
-                    {
-                        c.Text = null;
-                    }
-                }
-                StaffForm_Load(sender, e);
-                hidegb();
             }
         }
 
@@ -171,22 +187,31 @@ namespace kursproga
                 showgb(gbDel);
                 tbDel.Focus();
             }
-            if (gbDel.Visible == true && !string.IsNullOrEmpty(tbDel.Text))
+            if (gbDel.Visible == true)
             {
-                DB db = new DB();
-                MySqlCommand command = new MySqlCommand("DELETE FROM staff WHERE idStaff = '" + tbDel.Text + "'", db.getConnection());
-                db.openConnection();
-                if (command.ExecuteNonQuery() == 1)
+                if (!string.IsNullOrEmpty(tbDel.Text))
                 {
-                    MessageBox.Show("Данные удалены");
+                    DB db = new DB();
+                    MySqlCommand command = new MySqlCommand("DELETE FROM staff WHERE idStaff = '" + tbDel.Text + "'", db.getConnection());
+                    db.openConnection();
+                    if (command.ExecuteNonQuery() == 1)
+                    {
+                        MessageBox.Show("Данные удалены");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Данные не удалены");
+                    }
+                    tbDel.Text = null;
+                    StaffForm_Load(sender, e);
+                    hidegb();
                 }
-                else
+                
+                else if (string.IsNullOrEmpty(tbDel.Text))
                 {
-                    MessageBox.Show("Данные не удалены");
+                    MessageBox.Show("Заполните поле", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
+                    return;
                 }
-                tbDel.Text = null;
-                StaffForm_Load(sender, e);
-                hidegb();
             }
         }
 

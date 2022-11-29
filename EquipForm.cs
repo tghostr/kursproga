@@ -18,6 +18,7 @@ namespace kursproga
         public EquipForm()
         {
             InitializeComponent();
+            tbSearch.MaxLength = 32;
         }
         
         
@@ -87,39 +88,47 @@ namespace kursproga
                     MessageBox.Show("В таблице отсутствуют записи!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
                 }
             }
-            if (gbUpd.Visible == true && !string.IsNullOrEmpty(textBox5.Text))
+            if (gbUpd.Visible == true)
             {
-                if (dataGridView1.Rows.Count > 0) { id = Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value.ToString()); }
-                int emprice = Convert.ToInt32(textBox7.Text);
-                int emnumber = Convert.ToInt32(textBox8.Text);
-                int emcost = emprice * emnumber;
-                DB db = new DB();
-                MySqlCommand command = new MySqlCommand("UPDATE `equipment` SET emname='" + textBox5.Text + "', emunit='" + textBox6.Text + "', emprice='"+textBox7.Text+"', emnumber='"+textBox8.Text+"', emcost='"+emcost+ "' WHERE idequipment='"+id+"' ;", db.getConnection());
-                db.openConnection();
-                try
+                if (!string.IsNullOrEmpty(textBox5.Text) && !string.IsNullOrEmpty(textBox6.Text) && !string.IsNullOrEmpty(textBox7.Text) && !string.IsNullOrEmpty(textBox8.Text))
                 {
-                    if (command.ExecuteNonQuery() == 1)
+                    if (dataGridView1.Rows.Count > 0) { id = Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value.ToString()); }
+                    int emprice = Convert.ToInt32(textBox7.Text);
+                    int emnumber = Convert.ToInt32(textBox8.Text);
+                    int emcost = emprice * emnumber;
+                    DB db = new DB();
+                    MySqlCommand command = new MySqlCommand("UPDATE `equipment` SET emname='" + textBox5.Text + "', emunit='" + textBox6.Text + "', emprice='" + textBox7.Text + "', emnumber='" + textBox8.Text + "', emcost='" + emcost + "' WHERE idequipment='" + id + "' ;", db.getConnection());
+                    db.openConnection();
+                    try
                     {
-                        MessageBox.Show("Данные обновлены");
+                        if (command.ExecuteNonQuery() == 1)
+                        {
+                            MessageBox.Show("Данные обновлены");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Данные не обновлены");
+                        }
                     }
-                    else
+                    catch (Exception ex)
                     {
-                        MessageBox.Show("Данные не обновлены");
+                        MessageBox.Show(ex.Message);
                     }
+                    foreach (Control c in gbUpd.Controls)
+                    {
+                        if (c is TextBox)
+                        {
+                            c.Text = null;
+                        }
+                    }
+                    EquipForm_Load(sender, e);
+                    hidegb();
                 }
-                catch (Exception ex)
+                else if (string.IsNullOrEmpty(textBox5.Text) || string.IsNullOrEmpty(textBox6.Text) || string.IsNullOrEmpty(textBox7.Text) || string.IsNullOrEmpty(textBox8.Text))
                 {
-                    MessageBox.Show(ex.Message);
+                    MessageBox.Show("Все поля должны быть заполнены!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
+                    return;
                 }
-                foreach (Control c in gbUpd.Controls)
-                {
-                    if (c is TextBox)
-                    {
-                        c.Text = null;
-                    }
-                }
-                EquipForm_Load(sender, e);
-                hidegb();
             }
         }
         private void btIns_Click(object sender, EventArgs e)
@@ -136,38 +145,46 @@ namespace kursproga
                     }
                 }
             }
-            if (gbIns.Visible == true && !string.IsNullOrEmpty(textBox1.Text))
+            if (gbIns.Visible == true)
             {
-                int emprice = Convert.ToInt32(textBox3.Text);
-                int emnumber = Convert.ToInt32(textBox4.Text);
-                int emcost = emprice * emnumber;
-                DB db = new DB();
-                MySqlCommand command = new MySqlCommand("INSERT INTO `equipment`(`emname`, `emunit`, `emprice`, `emnumber`, `emcost`) VALUES('" + textBox1.Text + "', '" + textBox2.Text + "', '" + textBox3.Text + "', '" + textBox4.Text + "', '" + emcost + "');", db.getConnection());
-                db.openConnection();
-                try
+                if (!string.IsNullOrEmpty(textBox1.Text) && !string.IsNullOrEmpty(textBox2.Text) && !string.IsNullOrEmpty(textBox3.Text) && !string.IsNullOrEmpty(textBox4.Text))
                 {
-                    if (command.ExecuteNonQuery() == 1)
+                    int emprice = Convert.ToInt32(textBox3.Text);
+                    int emnumber = Convert.ToInt32(textBox4.Text);
+                    int emcost = emprice * emnumber;
+                    DB db = new DB();
+                    MySqlCommand command = new MySqlCommand("INSERT INTO `equipment`(`emname`, `emunit`, `emprice`, `emnumber`, `emcost`) VALUES('" + textBox1.Text + "', '" + textBox2.Text + "', '" + textBox3.Text + "', '" + textBox4.Text + "', '" + emcost + "');", db.getConnection());
+                    db.openConnection();
+                    try
                     {
-                        MessageBox.Show("Данные добавлены");
+                        if (command.ExecuteNonQuery() == 1)
+                        {
+                            MessageBox.Show("Данные добавлены");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Данные не добавлены");
+                        }
                     }
-                    else
+                    catch (Exception ex)
                     {
-                        MessageBox.Show("Данные не добавлены");
+                        MessageBox.Show(ex.Message);
                     }
+                    foreach (Control c in gbIns.Controls)
+                    {
+                        if (c is TextBox)
+                        {
+                            c.Text = null;
+                        }
+                    }
+                    EquipForm_Load(sender, e);
+                    hidegb();
                 }
-                catch (Exception ex)
+                else if (!string.IsNullOrEmpty(textBox1.Text) || !string.IsNullOrEmpty(textBox2.Text) || !string.IsNullOrEmpty(textBox3.Text) || !string.IsNullOrEmpty(textBox4.Text))
                 {
-                    MessageBox.Show(ex.Message);
+                    MessageBox.Show("Все поля должны быть заполнены!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
+                    return;
                 }
-                foreach (Control c in gbIns.Controls)
-                {
-                    if (c is TextBox)
-                    {
-                        c.Text = null;
-                    }
-                }
-                EquipForm_Load(sender, e);
-                hidegb();
             }
         }
 
@@ -179,22 +196,30 @@ namespace kursproga
                 showgb(gbDel);
                 tbDel.Focus();
             }
-            if (gbDel.Visible == true && !string.IsNullOrEmpty(tbDel.Text))
+            if (gbDel.Visible == true)
             {
-                DB db = new DB();
-                MySqlCommand command = new MySqlCommand("DELETE FROM equipment WHERE idequipment = '" + tbDel.Text + "'", db.getConnection());
-                db.openConnection();
-                if (command.ExecuteNonQuery() == 1)
+                if (!string.IsNullOrEmpty(tbDel.Text))
                 {
-                    MessageBox.Show("Данные удалены");
+                    DB db = new DB();
+                    MySqlCommand command = new MySqlCommand("DELETE FROM equipment WHERE idequipment = '" + tbDel.Text + "'", db.getConnection());
+                    db.openConnection();
+                    if (command.ExecuteNonQuery() == 1)
+                    {
+                        MessageBox.Show("Данные удалены");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Данные не удалены");
+                    }
+                    tbDel.Text = null;
+                    EquipForm_Load(sender, e);
+                    hidegb();
                 }
-                else
+                else if (string.IsNullOrEmpty(tbDel.Text))
                 {
-                    MessageBox.Show("Данные не удалены");
+                    MessageBox.Show("Заполните поле", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
+                    return;
                 }
-                tbDel.Text = null;
-                EquipForm_Load(sender, e);
-                hidegb();
             }
         }
 
