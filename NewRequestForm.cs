@@ -202,6 +202,7 @@ namespace kursproga
                         c.Text = null;
                     }
                 }
+
                 NewRequestForm_Load(sender, e);
 
             }
