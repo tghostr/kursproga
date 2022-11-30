@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Ghost\\Source\\Repos\\kursproga9\\kursproga.csproj": {}
+    "C:\\Users\\Ghost\\Source\\Repos\\kursproga0\\kursproga.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Ghost\\Source\\Repos\\kursproga9\\kursproga.csproj": {
+    "C:\\Users\\Ghost\\Source\\Repos\\kursproga0\\kursproga.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Ghost\\Source\\Repos\\kursproga9\\kursproga.csproj",
+        "projectUniqueName": "C:\\Users\\Ghost\\Source\\Repos\\kursproga0\\kursproga.csproj",
         "projectName": "kursproga",
-        "projectPath": "C:\\Users\\Ghost\\Source\\Repos\\kursproga9\\kursproga.csproj",
+        "projectPath": "C:\\Users\\Ghost\\Source\\Repos\\kursproga0\\kursproga.csproj",
         "packagesPath": "C:\\Users\\Ghost\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Ghost\\Source\\Repos\\kursproga9\\obj\\",
+        "outputPath": "C:\\Users\\Ghost\\Source\\Repos\\kursproga0\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Ghost\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -40,10 +40,6 @@
         "net6.0-windows7.0": {
           "targetAlias": "net6.0-windows",
           "dependencies": {
-            "MaterialSkin": {
-              "target": "Package",
-              "version": "[0.2.1, )"
-            },
             "MySqlConnector": {
               "target": "Package",
               "version": "[2.2.0, )"

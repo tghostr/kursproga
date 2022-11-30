@@ -100,7 +100,7 @@ namespace kursproga
                 }
                 else if (string.IsNullOrEmpty(tbDel.Text))
                 {
-                    MessageBox.Show("Заполните поле", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
+                    MessageBox.Show("Заполните поле кодом заявки, которую хотите удалить", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                     return;
                 }
             }

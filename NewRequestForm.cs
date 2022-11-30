@@ -19,6 +19,7 @@ namespace kursproga
         {
             InitializeComponent();
             tbSearch.MaxLength = 32;
+            
         }
         int da = Convert.ToInt32(Global.GlobalVar);
         private void NewRequestForm_Load(object sender, EventArgs e)
@@ -74,7 +75,11 @@ namespace kursproga
         {
             try
             {
-                int idk = Convert.ToInt32(dataGridView2.CurrentRow.Cells[0].Value.ToString());
+                int id = Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value.ToString());
+                textBox1.Text = dataGridView2.CurrentRow.Cells[1].Value.ToString();
+                textBox2.Text = dataGridView2.CurrentRow.Cells[2].Value.ToString();
+                textBox3.Text = dataGridView2.CurrentRow.Cells[3].Value.ToString();
+                textBox4.Text = dataGridView2.CurrentRow.Cells[4].Value.ToString();
             }
             catch
             {
@@ -136,7 +141,7 @@ namespace kursproga
                     }
                 }
             }
-            if (gbIns.Visible == true && !string.IsNullOrEmpty(textBox1.Text))
+            if (gbIns.Visible == true && !string.IsNullOrEmpty(textBox1.Text) && !string.IsNullOrEmpty(textBox2.Text) && !string.IsNullOrEmpty(textBox3.Text) && !string.IsNullOrEmpty(textBox4.Text))
             {
                 string type = null;
                 if (radioButton1.Checked == true) { type = "О"; }
@@ -169,72 +174,82 @@ namespace kursproga
 
         private void btSave_Click(object sender, EventArgs e)
         {
-            string? type = default(string);
-            string? type1 = default(string);
-            string id = dataGridView2.CurrentRow.Cells[0].Value.ToString();
-            string number = dataGridView2.CurrentRow.Cells[3].Value.ToString();
-            string date = DateTime.Now.ToShortDateString();
-            DB db = new DB();
-            if (radioButton1.Checked == true)
+            if(/*gbIns.Visible == true && */!string.IsNullOrEmpty(textBox1.Text) && !string.IsNullOrEmpty(textBox2.Text) && !string.IsNullOrEmpty(textBox3.Text) && !string.IsNullOrEmpty(textBox4.Text))
             {
-                type = id;
-                MySqlCommand command = new MySqlCommand("INSERT INTO `request`(`staff_idStaff`, `reqdata`, `equipment_idequipment`, `reqnumber`) VALUES('" + da + "', '" + date + "', '" + type + "', '" + number + "')", db.getConnection());
-                db.openConnection();
-                try
+                string? type = default(string);
+                string? type1 = default(string);
+                string id = dataGridView2.CurrentRow.Cells[0].Value.ToString();
+                string number = dataGridView2.CurrentRow.Cells[3].Value.ToString();
+                string date = DateTime.Now.ToString("yyyy-MM-dd");
+                
+                DB db = new DB();
+                if (radioButton1.Checked == true)
                 {
-                    if (command.ExecuteNonQuery() == 1)
+                    type = id;
+                    MySqlCommand command = new MySqlCommand("INSERT INTO `request`(`staff_idStaff`, `reqdata`, `equipment_idequipment`, `reqnumber`) VALUES('" + da + "', '" + date + "', '" + type + "', '" + number + "')", db.getConnection());
+                    db.openConnection();
+                    try
                     {
-                        MessageBox.Show("Данные добавлены");
+                        if (command.ExecuteNonQuery() == 1)
+                        {
+                            MessageBox.Show("Данные добавлены");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Данные не добавлены");
+                        }
                     }
-                    else
+                    catch (Exception ex)
                     {
-                        MessageBox.Show("Данные не добавлены");
+                        MessageBox.Show(ex.Message);
                     }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-                foreach (Control c in gbIns.Controls)
-                {
-                    if (c is System.Windows.Forms.TextBox)
+                    foreach (Control c in gbIns.Controls)
                     {
-                        c.Text = null;
+                        if (c is System.Windows.Forms.TextBox)
+                        {
+                            c.Text = null;
+                        }
                     }
-                }
 
-                NewRequestForm_Load(sender, e);
+                    NewRequestForm_Load(sender, e);
 
+                }
+                if (radioButton2.Checked == true)
+                {
+                    type1 = id;
+                    MySqlCommand command = new MySqlCommand("INSERT INTO `request`(`staff_idStaff`, `reqdata`, `material_idmaterial`, `reqnumber`) VALUES('" + da + "', '" + date + "', '" + type1 + "', '" + number + "')", db.getConnection());
+                    db.openConnection();
+                    try
+                    {
+                        if (command.ExecuteNonQuery() == 1)
+                        {
+                            MessageBox.Show("Данные добавлены");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Данные не добавлены");
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                    foreach (Control c in gbIns.Controls)
+                    {
+                        if (c is System.Windows.Forms.TextBox)
+                        {
+                            c.Text = null;
+                        }
+                    }
+                    NewRequestForm_Load(sender, e);
+                }
             }
-            if (radioButton2.Checked == true)
+            else if (string.IsNullOrEmpty(textBox1.Text) || string.IsNullOrEmpty(textBox2.Text) || string.IsNullOrEmpty(textBox3.Text) || string.IsNullOrEmpty(textBox4.Text))
             {
-                type1 = id;
-                MySqlCommand command = new MySqlCommand("INSERT INTO `request`(`staff_idStaff`, `reqdata`, `material_idmaterial`, `reqnumber`) VALUES('" + da + "', '" + date + "', '" + type1 + "', '" + number + "')", db.getConnection());
-                db.openConnection();
-                try
-                {
-                    if (command.ExecuteNonQuery() == 1)
-                    {
-                        MessageBox.Show("Данные добавлены");
-                    }
-                    else
-                    {
-                        MessageBox.Show("Данные не добавлены");
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-                foreach (Control c in gbIns.Controls)
-                {
-                    if (c is System.Windows.Forms.TextBox)
-                    {
-                        c.Text = null;
-                    }
-                }
-                NewRequestForm_Load(sender, e);
+                MessageBox.Show("Все поля должны быть заполнены!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
+                return;
             }
+
         }
 
         private void button1_Click(object sender, EventArgs e)

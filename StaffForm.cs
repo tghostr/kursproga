@@ -64,21 +64,14 @@ namespace kursproga
         {
             if (gbUpd.Visible == false)
             {
-                try
+                showgb(gbUpd);
+                textBox5.Focus();
+                foreach (Control c in gbUpd.Controls)
                 {
-                    showgb(gbUpd);
-                    textBox5.Focus();
-                    foreach (Control c in gbUpd.Controls)
+                    if (c is TextBox)
                     {
-                        if (c is TextBox)
-                        {
-                            c.Text = null;
-                        }
+                        c.Text = null;
                     }
-                }
-                catch
-                {
-                    MessageBox.Show("В таблице отсутствуют записи!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
                 }
             }
             if (gbUpd.Visible == true)

@@ -164,6 +164,7 @@
             this.gbIns.Size = new System.Drawing.Size(200, 118);
             this.gbIns.TabIndex = 19;
             this.gbIns.TabStop = false;
+            this.gbIns.Visible = false;
             // 
             // textBox4
             // 

@@ -2,15 +2,6 @@
   "version": 3,
   "targets": {
     "net6.0-windows7.0": {
-      "MaterialSkin/0.2.1": {
-        "type": "package",
-        "compile": {
-          "lib/MaterialSkin.dll": {}
-        },
-        "runtime": {
-          "lib/MaterialSkin.dll": {}
-        }
-      },
       "Microsoft.NETCore.Platforms/3.1.0": {
         "type": "package",
         "compile": {
@@ -172,18 +163,6 @@
     }
   },
   "libraries": {
-    "MaterialSkin/0.2.1": {
-      "sha512": "/6AEh6qIeNKbxsha7IHBb5s50tyvB0iZuGQPB9mjyR+mRdfQ7vnKTklwI26Y/DbrymTcg+aBHSgCgAT7/qLIrQ==",
-      "type": "package",
-      "path": "materialskin/0.2.1",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "lib/MaterialSkin.dll",
-        "materialskin.0.2.1.nupkg.sha512",
-        "materialskin.nuspec"
-      ]
-    },
     "Microsoft.NETCore.Platforms/3.1.0": {
       "sha512": "z7aeg8oHln2CuNulfhiLYxCVMPEwBl3rzicjvIX+4sUuCwvXw5oXQEtbiU2c0z4qYL5L3Kmx0mMA/+t/SbY67w==",
       "type": "package",
@@ -527,7 +506,6 @@
   },
   "projectFileDependencyGroups": {
     "net6.0-windows7.0": [
-      "MaterialSkin >= 0.2.1",
       "MySqlConnector >= 2.2.0",
       "System.Data.SqlClient >= 4.8.5"
     ]
@@ -538,11 +516,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Ghost\\Source\\Repos\\kursproga9\\kursproga.csproj",
+      "projectUniqueName": "C:\\Users\\Ghost\\Source\\Repos\\kursproga0\\kursproga.csproj",
       "projectName": "kursproga",
-      "projectPath": "C:\\Users\\Ghost\\Source\\Repos\\kursproga9\\kursproga.csproj",
+      "projectPath": "C:\\Users\\Ghost\\Source\\Repos\\kursproga0\\kursproga.csproj",
       "packagesPath": "C:\\Users\\Ghost\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Ghost\\Source\\Repos\\kursproga9\\obj\\",
+      "outputPath": "C:\\Users\\Ghost\\Source\\Repos\\kursproga0\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Ghost\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -571,10 +549,6 @@
       "net6.0-windows7.0": {
         "targetAlias": "net6.0-windows",
         "dependencies": {
-          "MaterialSkin": {
-            "target": "Package",
-            "version": "[0.2.1, )"
-          },
           "MySqlConnector": {
             "target": "Package",
             "version": "[2.2.0, )"
@@ -606,17 +580,5 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
       }
     }
-  },
-  "logs": [
-    {
-      "code": "NU1701",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Пакет \"MaterialSkin 0.2.1\" был восстановлен с помощью \".NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1\", а не целевой платформы проекта \"net6.0-windows7.0\". Этот пакет может быть не полностью совместим с вашим проектом.",
-      "libraryId": "MaterialSkin",
-      "targetGraphs": [
-        "net6.0-windows7.0"
-      ]
-    }
-  ]
+  }
 }
