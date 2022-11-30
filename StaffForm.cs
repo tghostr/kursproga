@@ -34,7 +34,7 @@ namespace kursproga
             dataGridView1.DataSource = table;
             dataGridView1.Columns[0].HeaderText = "Код Сотрудника";
             dataGridView1.Columns[1].HeaderText = "Имя";
-            dataGridView1.Columns[2].HeaderText = "Фамилияя";
+            dataGridView1.Columns[2].HeaderText = "Фамилия";
             dataGridView1.Columns[3].HeaderText = "Дата рождения";
         }
         private void btSearch_Click(object sender, EventArgs e)
@@ -50,7 +50,7 @@ namespace kursproga
 
             dataGridView1.Columns[0].HeaderText = "Код Сотрудника";
             dataGridView1.Columns[1].HeaderText = "Имя";
-            dataGridView1.Columns[2].HeaderText = "Фамилияя";
+            dataGridView1.Columns[2].HeaderText = "Фамилия";
             dataGridView1.Columns[3].HeaderText = "Дата рождения";
 
         }

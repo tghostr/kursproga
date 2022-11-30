@@ -50,28 +50,11 @@ namespace kursproga
                 {
                     Global.GlobalVar = command.ExecuteScalar().ToString();
                     this.Hide();
-                    MainForm mainForm = new MainForm();
-                    mainForm.Show();
+                    NewRequestForm nrForm = new NewRequestForm();
+                    nrForm.Show();
                 }
                 else
-                {
-                    command = new MySqlCommand("Select `idstaff` from `authorization` where `login` = @uL AND `pass` = @uP AND `perms` = 2", db.getConnection());
-                    command.Parameters.Add("@uL", MySqlDbType.VarChar).Value = loginUser;
-                    command.Parameters.Add("@uP", MySqlDbType.VarChar).Value = passUser;
-
-                    adapter.SelectCommand = command;
-                    adapter.Fill(table);
-
-                    if (table.Rows.Count > 0)
-                    {
-                        Global.GlobalVar = command.ExecuteScalar().ToString();
-                        this.Hide();
-                        NewRequestForm nrForm = new NewRequestForm();
-                        nrForm.Show();
-                    }
-                    else
-                        MessageBox.Show("Неправильный логин или пароль!");
-                }
+                    MessageBox.Show("Неправильный логин или пароль!");
             }
             db.closeConnection();
         }

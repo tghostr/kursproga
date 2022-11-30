@@ -40,37 +40,33 @@ namespace kursproga
         {
             ShowForm(new EquipForm());
         }
-
         private void tsbtStaff_Click(object sender, EventArgs e)
         {
             ShowForm(new StaffForm());
         }
-
-        private void toolStripButton2_Click(object sender, EventArgs e)
+        private void tsbtExit_Click(object sender, EventArgs e)
         {
             this.Close();
             AuthForm authForm = new AuthForm();
             authForm.Show();
         }
-
-        private void toolStripButton4_Click(object sender, EventArgs e)
+        private void tsbtMaterial_Click(object sender, EventArgs e)
         {
             ShowForm(new MaterialForm());
         }
-
-        private void toolStripButton3_Click(object sender, EventArgs e)
+        private void tsbtReq_Click(object sender, EventArgs e)
         {
             ShowForm(new RequestForm());
         }
+        private void tsbtAuth_Click(object sender, EventArgs e)
+        {
+            ShowForm(new TableAuthForm());
+        }
+
 
         private void MainForm_Load(object sender, EventArgs e)
         {
 
-        }
-
-        private void toolStripButton1_Click(object sender, EventArgs e)
-        {
-            ShowForm(new TableAuthForm());
         }
     }
 }
